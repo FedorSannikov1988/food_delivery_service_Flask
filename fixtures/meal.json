@@ -1,0 +1,26 @@
+[
+    {
+        "title": "Салат Винегрет с селёдочкой",
+        "category": "Cалаты",
+        "file_path_image": "salad_vinaigrette_with_herring.jpg",
+        "description": "Картофель, капуста, свекла. сельдь, морковь, огурцы консервированные, горошек зеленый, лук репчатый, масло подсолнечное, соль.",
+        "proteins": 4.2,
+        "fats": 9.7,
+        "carbohydrates": 6.9,
+        "calories": 131.7,
+        "weight": "100/20",
+        "cost": 79
+    },
+    {
+        "title": "Салат Витаминный",
+        "category": "Cалаты",
+        "file_path_image": "salad_vitamin.jpg",
+        "description": "Капуста, яблоко, морковь, масло",
+        "proteins": 1,
+        "fats": 10,
+        "carbohydrates": 8.5,
+        "calories": 128,
+        "weight": "100/20",
+        "cost": 69
+    }
+]

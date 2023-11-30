@@ -1,34 +1,45 @@
-from .models import db, Students, Faculties
-from config import app
-
-
-#with app.app_context():
-#    db.create_all()
+from .db_api import db, Meal, path_for_meal, loading_fixtures, search_for_meal_by_title
+from config import app, logger
 
 
 @app.cli.command("init-db")
 def init_db():
     db.create_all()
-    print('database has been created')
+    print('db init')
 
 
-@app.cli.command("add-students")
-def add_students():
+@app.cli.command("add-meal-in-db")
+def add_meal_in_db():
 
-    count: int = 5
+    all_meal: dict = {}
 
-    for student in range(1, count + 1):
-       new_students = Students(name=f'student_name_{student}',
-                               surname=f'student_surname_{student}',
-                               age=18,
-                               gender='MALE',
-                               group=student,
-                               faculty_id=student)
-       db.session.add(new_students)
-    db.session.commit()
+    try:
+        all_meal = loading_fixtures(path_for_file=path_for_meal)
 
-    for faculty in range(1, count + 1):
-        new_faculty = Faculties(title_faculty=f'title_faculty_{faculty}')
-        db.session.add(new_faculty)
-    db.session.commit()
-    print('database is full')
+    except FileNotFoundError as file_with_data_not_found_error:
+        logger.error(file_with_data_not_found_error)
+        print('data file was not found')
+
+    except Exception as all_error_data_downloads:
+        logger.error(all_error_data_downloads)
+        print('unknown error when loading data from a file')
+
+    for one_meal in all_meal:
+
+        if not search_for_meal_by_title(search_title=one_meal['title']):
+
+            new_meal = Meal(title=one_meal['title'],
+                            category=one_meal['category'],
+                            file_path_image=one_meal['file_path_image'],
+                            description=one_meal['description'],
+                            proteins=one_meal['proteins'],
+                            fats=one_meal['fats'],
+                            carbohydrates=one_meal['carbohydrates'],
+                            calories=one_meal['calories'],
+                            weight=one_meal['weight'],
+                            cost=one_meal['cost'])
+            db.session.add(new_meal)
+        db.session.commit()
+
+    if all_meal:
+        print('add meal in db completed')

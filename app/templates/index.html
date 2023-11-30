@@ -1,0 +1,26 @@
+{% extends 'basic_template_index.html' %}
+
+{% block content %}
+
+    {% for one_meal in meal %}
+            <p>
+                one_meal.id =
+                {{ one_meal.id }}
+                <br>
+                one_meal.title =
+                {{ one_meal.title }}
+                <br>
+                one_meal.description =
+                {{ one_meal.description }}
+                <br>
+                one_meal.cost =
+                {{ one_meal.cost }}
+                <br>
+                one_meal.file_path_image =
+                {{ one_meal.file_path_image }}
+                <br>
+                <img src="{{ url_for('media', filename=one_meal.file_path_image) }}">
+            </p>
+    {% endfor %}
+
+{% endblock %}

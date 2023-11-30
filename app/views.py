@@ -1,20 +1,24 @@
-from .models import Students, Faculties
-from flask import render_template
+from flask import send_from_directory, \
+                  render_template
+from .db_api import Meal
 from config import app
+
+
+@app.route('/media/<path:filename>')
+def media(filename):
+    return send_from_directory('media', filename)
 
 
 @app.route('/')
 def index():
 
-    students = Students.query.all()
-    faculty_one = Faculties.query.get(1)
+    meal = Meal.query.all()
 
     context = {
-        'title_pag': 'Вывод информации о студентах',
-        'students': students,
-        'faculty_one': faculty_one
+        'title_pag': 'Главная страница',
+        'meal': meal
     }
-    return render_template('practica_3_task_1_all_students.html', **context)
+    return render_template('index.html', **context)
 
 
 if __name__ == '__main__':
