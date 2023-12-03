@@ -1,25 +1,65 @@
 {% extends 'basic_template.html' %}
 
+{% block css_for_index %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/styles/style_for_index.css') }}">
+{% endblock %}
+
 {% block content %}
 <section>
-    <div class="menu-for-index">
-    <dl>
-        <dt>Меню</dt>
-        {% for one_category_meal in all_categories_meal %}
-            <dd><a href="{{ one_category_meal.display_order_category }}">{{ one_category_meal.category_meal_name }}</a></dd>
-        {% endfor %}
-    </dl>
-    </div>
 
-    <div class="content-for-index">
+    <h2> Меню готовой еды </h2>
 
-        {% for one_category_meal in all_categories_meal %}
-            {% for one_meal in one_category_meal.information_about_meals %}
-                <p> {{ one_meal.title }} </p>
+
+    <div class="menu-and-content-for-index">
+
+        <div class="menu-for-index">
+            <dl>
+                <dt>Меню</dt>
+                {% for one_category_meal in all_categories_meal %}
+                    <dd><a href="#{{ one_category_meal.display_order_category }}">{{ one_category_meal.category_meal_name }}</a></dd>
+                {% endfor %}
+            </dl>
+        </div>
+
+        <div class="content-for-index">
+
+            {% for one_category_meal in all_categories_meal %}
+
+                <p id="{{ one_category_meal.display_order_category }}" >{{ one_category_meal.display_order_category }}</p>
+
+                <h2>
+                {{ one_category_meal.information_about_meals[0].category_meal_name }}
+                </h2>
+
+                {% for one_meal in one_category_meal.information_about_meals %}
+                    <img src="{{ url_for('media', filename=one_meal.file_path_image) }}" alt="*" width="100">
+                    <p> {{ one_meal.id }} </p>
+                    <p> {{ one_meal.title }} </p>
+                        {% if one_meal.description %}
+                         <p> {{ one_meal.description }} </p>
+                        {% endif %}
+                        {% if one_meal.proteins %}
+                         <p> {{ one_meal.proteins }} </p>
+                        {% endif %}
+                        {% if one_meal.fats %}
+                         <p> {{ one_meal.fats }} </p>
+                        {% endif %}
+                        {% if one_meal.carbohydrates %}
+                         <p> {{ one_meal.carbohydrates }} </p>
+                        {% endif %}
+                        {% if one_meal.calories %}
+                         <p> {{ one_meal.calories }} </p>
+                        {% endif %}
+                    <p> {{ one_meal.weight }} </p>
+                    <p> {{ one_meal.cost }} </p>
+                {% endfor %}
             {% endfor %}
-        {% endfor %}
+        </div>
 
     </div>
+
+<span id="anchor">Якорь HTML</span>
+
 </section>
 
 {% endblock %}

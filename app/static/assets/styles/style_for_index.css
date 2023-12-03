@@ -1,0 +1,10 @@
+.menu-and-content-for-index {
+    display: flex;
+}
+
+.menu-for-index {
+    position: fixed;
+}
+.content-for-index {
+    margin-left: 150px;
+}
