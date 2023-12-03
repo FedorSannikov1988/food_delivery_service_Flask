@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title_pag }}</title>
+</head>
+<body>
+<header>
+    <img src="{{ url_for('static', filename='assets/pic/logo.jpg') }}" alt="Логотип">
+    <!--
+    <img src="{{ url_for('static', filename='assets/pic/logo.png') }}" alt="Логотип">
+    -->
+</header>
+    {% block content %}{% endblock %}
+<footer>
+    <p>Это футтер !</p>
+</footer>
+</body>
+</html>

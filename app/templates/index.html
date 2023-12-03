@@ -1,26 +1,25 @@
-{% extends 'basic_template_index.html' %}
+{% extends 'basic_template.html' %}
 
 {% block content %}
+<section>
+    <div class="menu-for-index">
+    <dl>
+        <dt>Меню</dt>
+        {% for one_category_meal in all_categories_meal %}
+            <dd><a href="{{ one_category_meal.display_order_category }}">{{ one_category_meal.category_meal_name }}</a></dd>
+        {% endfor %}
+    </dl>
+    </div>
 
-    {% for one_meal in meal %}
-            <p>
-                one_meal.id =
-                {{ one_meal.id }}
-                <br>
-                one_meal.title =
-                {{ one_meal.title }}
-                <br>
-                one_meal.description =
-                {{ one_meal.description }}
-                <br>
-                one_meal.cost =
-                {{ one_meal.cost }}
-                <br>
-                one_meal.file_path_image =
-                {{ one_meal.file_path_image }}
-                <br>
-                <img src="{{ url_for('media', filename=one_meal.file_path_image) }}">
-            </p>
-    {% endfor %}
+    <div class="content-for-index">
+
+        {% for one_category_meal in all_categories_meal %}
+            {% for one_meal in one_category_meal.information_about_meals %}
+                <p> {{ one_meal.title }} </p>
+            {% endfor %}
+        {% endfor %}
+
+    </div>
+</section>
 
 {% endblock %}

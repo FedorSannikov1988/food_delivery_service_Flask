@@ -1,7 +1,7 @@
-from flask import send_from_directory, \
-                  render_template
-from .db_api import Meal
 from config import app
+from flask import render_template, \
+                  send_from_directory
+from .db_api import get_all_categories_meal
 
 
 @app.route('/media/<path:filename>')
@@ -12,11 +12,9 @@ def media(filename):
 @app.route('/')
 def index():
 
-    meal = Meal.query.all()
-
     context = {
         'title_pag': 'Главная страница',
-        'meal': meal
+        'all_categories_meal': get_all_categories_meal()
     }
     return render_template('index.html', **context)
 

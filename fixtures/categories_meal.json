@@ -1,0 +1,42 @@
+[
+    {
+        "category_meal_name": "Cалаты",
+        "display_order_category": 1
+    },
+    {
+        "category_meal_name": "Cупы",
+        "display_order_category": 2
+    },
+    {
+        "category_meal_name": "Вторые блюда",
+        "display_order_category": 3
+    },
+    {
+        "category_meal_name": "Воки",
+        "display_order_category": 4
+    },
+    {
+        "category_meal_name": "Гарниры",
+        "display_order_category": 5
+    },
+    {
+        "category_meal_name": "Завтраки",
+        "display_order_category": 6
+    },
+    {
+        "category_meal_name": "Соусы",
+        "display_order_category": 7
+    },
+    {
+        "category_meal_name": "Напитки",
+        "display_order_category": 8
+    },
+    {
+        "category_meal_name": "Десерты",
+        "display_order_category": 9
+    },
+    {
+        "category_meal_name": "Пирожки и булочки",
+        "display_order_category": 10
+    }
+]

@@ -3,6 +3,7 @@ import json
 
 
 path_for_meal = Path('fixtures', 'meal.json')
+path_for_categories_meal = Path('fixtures', 'categories_meal.json')
 
 
 def loading_fixtures(path_for_file: str | Path) -> dict:
