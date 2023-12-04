@@ -19,5 +19,23 @@ def index():
     return render_template('index.html', **context)
 
 
+@app.route('/terms_of_delivery/')
+def terms_of_delivery():
+
+    context = {
+        'title_pag': 'Условия доставки'
+    }
+    return render_template('terms_of_delivery.html', **context)
+
+
+@app.route('/contacts/')
+def contacts():
+
+    context = {
+        'title_pag': 'Контакты'
+    }
+    return render_template('сontacts.html', **context)
+
+
 if __name__ == '__main__':
     app.run()

@@ -4,19 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='assets/styles/style_for_basic_template.css') }}">
-    {% block css_for_index %}{% endblock %}
+    {% block for_css %}{% endblock %}
     <title>{{ title_page }}</title>
 </head>
 <body>
 <header>
-    <img src="{{ url_for('static', filename='assets/pic/logo.jpg') }}" alt="Логотип">
-    <!--
-    <img src="{{ url_for('static', filename='assets/pic/logo.png') }}" alt="Логотип">
-    -->
+    <div class="content-header">
+        <a class="link-for-logo" href="{{ url_for('index') }}">
+            <div class="store-logo">
+                <img class="store-logo-img" id="logo" src="{{ url_for('static', filename='assets/pic/logo.jpg') }}" alt="Логотип службы доставки Фантазии Федора">
+                 <p class="store-logo-text">
+                     ДОСТАВКА
+                 </p>
+            </div>
+        </a>
+
+        <div class="all-link-for-menu">
+            <a class="link-for-menu" href="{{ url_for('index') }}">
+                Меню
+            </a>
+            <a class="link-for-menu" href="{{ url_for('terms_of_delivery') }}">
+                Условия доставки
+            </a>
+            <a class="link-for-menu" href="{{ url_for('contacts') }}">
+                Контакты
+            </a>
+        </div>
+
+    </div>
 </header>
     {% block content %}{% endblock %}
 <footer>
-    <p>Это футтер !</p>
+    <div class="content-footer">
+        <p class="content-footer__text">
+            © 2023 Фантазии федора
+        </p>
+    </div>
 </footer>
 </body>
 </html>

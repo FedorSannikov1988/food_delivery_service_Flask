@@ -1,22 +1,41 @@
 {% extends 'basic_template.html' %}
 
-{% block css_for_index %}
+{% block for_css %}
     <link rel="stylesheet" href="{{ url_for('static', filename='assets/styles/style_for_index.css') }}">
 {% endblock %}
 
 {% block content %}
 <section>
 
-    <h2> Меню готовой еды </h2>
-
+    <h2 class="invisible_title_for_section">
+        Меню готовой еды в службе доставки
+    </h2>
 
     <div class="menu-and-content-for-index">
 
         <div class="menu-for-index">
-            <dl>
-                <dt>Меню</dt>
+            <dl class="menu-for-index__list">
+                <dt class="menu-for-index__heading">
+                    <a href="#" class="menu-for-index__heading__link">
+                        Меню
+                    </a>
+                </dt>
+                <dd>
+                    <a href="#logo">
+                            <button class="menu-for-index__button">
+                                Вверх
+                            </button>
+                    </a>
+                </dd>
+
                 {% for one_category_meal in all_categories_meal %}
-                    <dd><a href="#{{ one_category_meal.display_order_category }}">{{ one_category_meal.category_meal_name }}</a></dd>
+                    <dd>
+                        <a href="#display_order_category_{{ one_category_meal.display_order_category }}">
+                            <button class="menu-for-index__button">
+                                {{ one_category_meal.category_meal_name }}
+                            </button>
+                        </a>
+                    </dd>
                 {% endfor %}
             </dl>
         </div>
@@ -25,41 +44,94 @@
 
             {% for one_category_meal in all_categories_meal %}
 
-                <p id="{{ one_category_meal.display_order_category }}" >{{ one_category_meal.display_order_category }}</p>
+                <div class="wrapper-for-content-for-index__name-category">
+                    <p class="content-for-index__name-category"
+                        id="display_order_category_{{ one_category_meal.display_order_category }}">
+                    {{ one_category_meal.information_about_meals[0].category_meal_name }}
+                    </p>
+                </div>
 
-                <h2>
-                {{ one_category_meal.information_about_meals[0].category_meal_name }}
-                </h2>
+                <div class="content-for-index__grid_for_product_card">
 
-                {% for one_meal in one_category_meal.information_about_meals %}
-                    <img src="{{ url_for('media', filename=one_meal.file_path_image) }}" alt="*" width="100">
-                    <p> {{ one_meal.id }} </p>
-                    <p> {{ one_meal.title }} </p>
-                        {% if one_meal.description %}
-                         <p> {{ one_meal.description }} </p>
-                        {% endif %}
-                        {% if one_meal.proteins %}
-                         <p> {{ one_meal.proteins }} </p>
-                        {% endif %}
-                        {% if one_meal.fats %}
-                         <p> {{ one_meal.fats }} </p>
-                        {% endif %}
-                        {% if one_meal.carbohydrates %}
-                         <p> {{ one_meal.carbohydrates }} </p>
-                        {% endif %}
-                        {% if one_meal.calories %}
-                         <p> {{ one_meal.calories }} </p>
-                        {% endif %}
-                    <p> {{ one_meal.weight }} </p>
-                    <p> {{ one_meal.cost }} </p>
-                {% endfor %}
+                    {% for one_meal in one_category_meal.information_about_meals %}
+
+                        <div class="content-for-index__product_card">
+                            <img class="content-for-index__product_card__img"
+                                 src="{{ url_for('media', filename=one_meal.file_path_image) }}"
+                                 alt="{{ one_meal.title }}">
+
+                            <!--
+                            <p> {{ one_meal.id }} </p>
+                            -->
+
+                            <p class="content-for-index__product_card__title">
+                                {{ one_meal.title }}
+                            </p>
+
+                            {% if one_meal.description %}
+                            <p class="content-for-index__product_card__description">
+                                {{ one_meal.description }}
+                            </p>
+                            {% endif %}
+
+                            <div class="content-for-index__product_card__title_parameters">
+                                {% if one_meal.proteins and one_meal.fats and one_meal.carbohydrates and one_meal.calories %}
+                                    <p>
+                                        В 100 г продукта содержится:
+                                    </p>
+                                {% endif %}
+                            </div>
+
+                            <div class="content-for-index__product_card__text_parameters">
+                                {% if one_meal.proteins %}
+                                    {% if one_meal.proteins|int == one_meal.proteins %}
+                                    <p>Белки: {{ one_meal.proteins|int }}</p>
+                                    {% else %}
+                                    <p>Белки: {{ one_meal.proteins }}</p>
+                                    {% endif %}
+                                {% endif %}
+
+                                {% if one_meal.fats %}
+                                    {% if one_meal.fats|int == one_meal.fats %}
+                                    <p>Жиры: {{ one_meal.proteins|int }}</p>
+                                    {% else %}
+                                    <p>Жиры: {{ one_meal.fats }}</p>
+                                    {% endif %}
+                                {% endif %}
+
+                                {% if one_meal.carbohydrates %}
+                                    {% if one_meal.carbohydrates|int == one_meal.carbohydrates %}
+                                    <p>Углеводы: {{ one_meal.carbohydrates|int }}</p>
+                                    {% else %}
+                                    <p>Углеводы: {{ one_meal.carbohydrates }}</p>
+                                    {% endif %}
+                                {% endif %}
+
+                                {% if one_meal.calories %}
+                                    {% if one_meal.calories|int == one_meal.calories %}
+                                    <p>{{ one_meal.calories|int }} ккал</p>
+                                    {% else %}
+                                    <p>{{ one_meal.calories }} ккал</p>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+
+                            <div class="content-for-index__product_card__weight_and_cost">
+                                <p> {{ one_meal.weight }} </p>
+                                {% if one_meal.cost|int == one_meal.cost %}
+                                    <p>{{ one_meal.cost|int }} ₽</p>
+                                    {% else %}
+                                    <p>{{ one_meal.cost }} ₽</p>
+                                {% endif %}
+                            </div>
+
+                        </div>
+                    {% endfor %}
+                </div>
             {% endfor %}
         </div>
 
     </div>
-
-<span id="anchor">Якорь HTML</span>
-
 </section>
 
 {% endblock %}
