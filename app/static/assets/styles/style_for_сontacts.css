@@ -7,7 +7,7 @@
 
 .content-for-сontacts__title {
     color: #91b90a;
-    font-family: "Lato-Bold";
+    font-family: "Cousine-Bold";
     font-size: 50px;
     font-weight: 700;
     line-height: normal;
@@ -31,10 +31,14 @@
 
 .content-for-сontacts__text {
     color: #000000;
-    font-family: "Lato-Regular";
+    font-family: "Cousine-Regular";
     font-size: 25px;
     font-weight: 400;
     line-height: normal;
 
     margin-top: 100px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

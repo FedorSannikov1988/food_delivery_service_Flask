@@ -17,7 +17,7 @@
 
 .menu-for-index__button {
     color: #000;
-    font-family: "Lato-Bold";
+    font-family: "Cousine-Bold";
     font-size: 14px;
     font-weight: 700;
     line-height: normal;
@@ -47,7 +47,7 @@
 .menu-for-index__heading__link {
     text-decoration: none;
     color: #000;
-    font-family: "Lato-Bold";
+    font-family: "Cousine-Bold";
     font-size: 20px;
     font-weight: 700;
     line-height: normal;
@@ -66,7 +66,7 @@
 
 .content-for-index__name-category {
     color: #000;
-    font-family: "Lato-Bold";
+    font-family: "Cousine-Bold";
     font-size: 30px;
     font-weight: 700;
     line-height: normal;
@@ -113,7 +113,7 @@
     text-align: center;
 
     color: #000;
-    font-family: "Lato-Bold";
+    font-family: "Cousine-Bold";
     font-size: 22px;
     font-weight: 700;
     line-height: normal;
@@ -125,9 +125,11 @@
 
 .content-for-index__product_card__description {
     color: #000;
-    font-family: "Lato-Regular";
+    font-family: "Cousine-Regular";
     font-size: 16px;
     font-weight: 400;
+    line-height: normal;
+
     opacity: 0.7;
 
     width: 300px;
@@ -139,9 +141,11 @@
 
 .content-for-index__product_card__title_parameters {
     color: #000;
-    font-family: "Lato-Regular";
+    font-family: "Cousine-Regular";
     font-size: 12px;
     font-weight: 400;
+    line-height: normal;
+
     opacity: 0.7;
 
     text-align: center;
@@ -154,9 +158,11 @@
     grid-column-gap: 25px;
 
     color: #000;
-    font-family: "Lato-Regular";
+    font-family: "Cousine-Regular";
     font-size: 12px;
     font-weight: 400;
+    line-height: normal;
+
     opacity: 0.7;
 
     text-align: center;
@@ -166,12 +172,12 @@
     margin-top: 30px;
 
     display: grid;
-    grid-template-columns: 150px 75px;
-    grid-column-gap: 70px;
+    grid-template-columns: 200px 75px;
+    grid-column-gap: 20px;
     text-align: center;
 
     color: #000000;
-    font-family:'Lato-Bold';
+    font-family: "Cousine-Bold";
     font-size: 20px;
     font-weight: 700;
     line-height: normal;

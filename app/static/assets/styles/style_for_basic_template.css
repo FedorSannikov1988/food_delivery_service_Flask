@@ -1,29 +1,29 @@
 @font-face {
-    font-family: "Lato-Black";
-    src: url("../fonts/Lato-Black.ttf");
+    font-family: "Cousine-Bold";
+    src: url("../fonts/Cousine-Bold.ttf");
     font-style: normal;
-    line-height: normal; 
+    line-height: normal;
 }
 
 @font-face {
-    font-family: "Lato-Regular";
-    src: url("../fonts/Lato-Regular.ttf");
+    font-family: "Cousine-BoldItalic";
+    src: url("../fonts/Cousine-BoldItalic.ttf");
     font-style: normal;
-    line-height: normal; 
+    line-height: normal;
 }
 
 @font-face {
-    font-family: "Lato-Bold";
-    src: url("../fonts/Lato-Bold.ttf");
+    font-family: "Cousine-Italic";
+    src: url("../fonts/Cousine-Italic.ttf");
     font-style: normal;
-    line-height: normal; 
+    line-height: normal;
 }
 
 @font-face {
-    font-family: "Lato-Light";
-    src: url("../fonts/Lato-Light.ttf");
+    font-family: "Cousine-Regular";
+    src: url("../fonts/Cousine-Regular.ttf");
     font-style: normal;
-    line-height: normal; 
+    line-height: normal;
 }
 
 * {
@@ -59,7 +59,7 @@
 
 .store-logo-text {
     color: #91b90a;
-    font-family: "Lato-Bold";
+    font-family: "Cousine-Bold";
     font-size: 25px;
     font-weight: 700;
     line-height: normal;
@@ -82,7 +82,7 @@
     text-decoration: none;
 
     color: #000000;
-    font-family: "Lato-Regular";
+    font-family: "Cousine-Regular";
     font-size: 30px;
     font-weight: 400;
     line-height: normal;
@@ -101,9 +101,10 @@
 
 .content-footer__text {
     color: #ffffff;
-    font-family: "Lato-Regular";
+    font-family: "Cousine-Regular";
     font-size: 12px;
     font-weight: 400;
+    line-height: normal;
 }
 
 .content-footer {

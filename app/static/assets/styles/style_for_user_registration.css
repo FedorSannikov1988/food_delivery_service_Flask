@@ -1,0 +1,61 @@
+.content-for-user-registration {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content-for-user-registration__user-registration-form {
+    margin-top: 150px;
+
+    color: #000000;
+    font-family: "Cousine-Regular";
+    font-size: 20px;
+    font-weight: 400;
+    line-height: normal;
+}
+
+:root {
+    --width-text: 300px;
+    --height-text: 20px;
+}
+
+.content-for-user-registration__user-registration-form #name {
+    width: var(--width-text);
+    height: var(--height-text);
+}
+
+.content-for-user-registration__user-registration-form #surname {
+    width: var(--width-text);
+    height: var(--height-text);
+}
+
+.content-for-user-registration__user-registration-form #patronymic {
+    width: var(--width-text);
+    height: var(--height-text);
+}
+
+.content-for-user-registration__user-registration-form #date_birth {
+    width: var(--width-text);
+    height: var(--height-text);
+}
+
+.content-for-user-registration__user-registration-form #email {
+    width: var(--width-text);
+    height: var(--height-text);
+}
+
+.content-for-user-registration__user-registration-form #default_shipping_address {
+    width: var(--width-text);
+    height: var(--height-text);
+}
+
+.content-for-user-registration__user-registration-form #password {
+    width: var(--width-text);
+    height: var(--height-text);
+}
+
+.content-for-user-registration__user-registration-form #confirm_password {
+    width: var(--width-text);
+    height: var(--height-text);
+}
