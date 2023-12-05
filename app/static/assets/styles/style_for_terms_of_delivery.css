@@ -1,1 +1,37 @@
+.content-for-terms_of_delivery {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+.content-for-terms_of_delivery__title {
+    color: #91b90a;
+    font-family: "Lato-Bold";
+    font-size: 50px;
+    font-weight: 700;
+    line-height: normal;
+
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.wrapper-for-content-for-terms_of_delivery {
+    width: 1000px;
+}
+
+.content-for-terms_of_delivery__text {
+    color: #000000;
+    font-family: "Lato-Regular";
+    font-size: 25px;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.content-for-terms_of_delivery__text-allert {
+    color: #e71313;
+    font-family: "Lato-Bold";
+    font-size: 25px;
+    font-weight: 700;
+    line-height: normal;
+}

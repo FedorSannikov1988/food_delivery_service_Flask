@@ -5,9 +5,25 @@
 {% endblock %}
 
 {% block content %}
-<section>
+    <section class="content-for-сontacts">
 
-    Контакты
+        <h2 class="content-for-сontacts__title">
+            Контакты
+        </h2>
 
-</section>
+        <div class="wrapper-for-content-for-сontacts__img">
+             <img class="content-for-сontacts__img"
+                                 src="{{ url_for('static', filename='assets/pic/my_photo.jpeg') }}"
+                                 alt="моя фотография">
+        </div>
+
+        <div class="content-for-сontacts__text">
+            <p>Telephone: 89609752504;</p>
+            <p>Telegram: @Fedor_Sannikov;</p>
+            <p>Email #1: fedor.sannikov88@gmail.com;</p>
+            <p>Email #2: fedor.sannikov88@yandex.ru;</p>
+            <p>Email #3: fedor.sannikov-88@yandex.ru.</p>
+        </div>
+
+    </section>
 {% endblock %}
