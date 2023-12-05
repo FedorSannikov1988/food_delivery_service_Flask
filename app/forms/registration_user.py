@@ -1,6 +1,12 @@
-from wtforms.validators import DataRequired, EqualTo, Regexp, Length, Email
-from wtforms import PasswordField, StringField, DateField
+from wtforms import DateField, \
+                    StringField, \
+                    PasswordField
 from flask_wtf import FlaskForm
+from wtforms.validators import Email, \
+                               Length, \
+                               Regexp, \
+                               EqualTo, \
+                               DataRequired
 
 
 class UserRegistration(FlaskForm):

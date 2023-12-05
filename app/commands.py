@@ -1,7 +1,7 @@
-from config import app, \
+from config import db, \
+                   app, \
                    logger
-from .db_api import db, \
-                    Meal, \
+from .db_api import Meal, \
                     path_for_meal, \
                     CategoriesMeal, \
                     loading_fixtures,\

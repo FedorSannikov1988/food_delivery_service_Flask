@@ -11,6 +11,7 @@
         <form class="content-for-user-registration__user-registration-form" action="{{ url_for('user_registration') }}" method="post">
 
             {{ form.csrf_token }}
+
             {% for field in form if field.name != 'csrf_token' %}
 
                 <p>
@@ -38,7 +39,6 @@
                 {% endif %}
             {% endwith %}
 
-    </form>
-
+        </form>
     </section>
 {% endblock %}

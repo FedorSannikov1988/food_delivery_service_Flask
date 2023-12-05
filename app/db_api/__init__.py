@@ -1,5 +1,4 @@
-from .models import db, \
-                    Meal, \
+from .models import Meal, \
                     CategoriesMeal
 from .loading_fixtures import path_for_meal, \
                               loading_fixtures, \

@@ -35,6 +35,8 @@ def add_user_in_database(name: str,
                      default_shipping_address=
                      default_shipping_address)
 
-    new_user.set_password(password=password)
+    new_user.set_password(password=
+                          password)
+
     db.session.add(new_user)
     db.session.commit()
