@@ -1,0 +1,142 @@
+.content-for-user-log-in-account {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content-for-user-log-in-account__user-log-in-account-form {
+    margin-top: 300px;
+
+    color: #000000;
+    font-family: "Cousine-Regular";
+    font-size: 20px;
+    font-weight: 400;
+    line-height: normal;
+    /*
+    border: 1px solid #000000;
+    width: 500px;
+    */
+    /*
+    height: 300px;
+    */
+
+        --box-shadow:
+		0 16px 24px 2px rgba(33,37,41,.04),
+		0 6px 30px 5px rgba(33,37,41,.08),
+		0 8px 10px -5px rgba(33,37,41,.3);
+    box-shadow: var(--box-shadow);
+}
+
+.content-for-user-log-in-account__user-log-in-account-form__errors {
+    color: red;
+    font-family: "Cousine-Bold";
+    font-size: 12px;
+    font-weight: 700;
+    line-height: normal;
+
+    text-align: center;
+
+    width: 310px;
+
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+:root {
+    --form-width-text: 310px;
+    --form-height-text: 25px;
+
+    --font-family-text: "Cousine-Regular";
+    --font-size-text: 12px;
+    --font-weight-text: 400;
+    --font-line-height: normal;
+
+    --font-padding-left: 10px;
+    --font-padding-right: 10px;
+
+    --font-margin-bottom: 20px;
+}
+
+.content-for-user-log-in-account__user-log-in-account-form #email {
+    width: var(--form-width-text);
+    height: var(--form-height-text);
+
+    font-family: var(--font-family-text);
+    font-size: var(--font-size-text);
+    font-weight: var(--font-weight-text);
+    line-height: var(--font-line-height);
+
+    padding-left: var(--font-padding-left);
+    padding-right: var(--font-padding-right);
+
+    margin-bottom: var(--font-margin-bottom);
+
+    border: 1px solid #000000;
+}
+
+.content-for-user-log-in-account__user-log-in-account-form #password {
+    width: var(--form-width-text);
+    height: var(--form-height-text);
+
+    font-family: var(--font-family-text);
+    font-size: var(--font-size-text);
+    font-weight: var(--font-weight-text);
+    line-height: var(--font-line-height);
+
+    padding-left: var(--font-padding-left);
+    padding-right: var(--font-padding-right);
+
+    margin-bottom: var(--font-margin-bottom);
+
+    border: 1px solid #000000;
+}
+
+.content-for-user-log-in-account__wrapper-for-button {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.content-for-user-log-in-account__entrance-button {
+
+    font-family: var(--font-family-text);
+    font-size: var(--font-size-text);
+    font-weight: var(--font-weight-text);
+    line-height: var(--font-line-height);
+
+    padding: 8px;
+
+    background: #FFFFFF;
+    border: 2px solid #000000;
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    transition: 500ms;
+}
+
+.content-for-user-log-in-account__entrance-button:hover {
+    color: white;
+    background: #91b90a;
+    border: none;
+}
+
+.content-for-user-log-in-account__flash-messages {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    width: 350px;
+}
+
+.content-for-user-log-in-account__flash-message_error {
+    color: red;
+    font-family: "Cousine-Bold";
+    font-size: 16px;
+    font-weight: 700;
+    line-height: normal;
+
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    text-align: center;
+}
+

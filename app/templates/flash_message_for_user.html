@@ -1,0 +1,24 @@
+{% extends 'basic_template.html' %}
+
+{% block for_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/styles/style_for_flash_message_for_user.css') }}">
+{% endblock %}
+
+
+{% block content %}
+
+    <section class="content-for-flash-message-for-user">
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <dl class="content-for-flash-message-for-user__list-flash-messages">
+                    {% for category, message in messages %}
+                        <dd class="content-for-flash-message-for-user__flash-message_{{ category }}">{{ message }}</dd>
+                    {% endfor %}
+                    </dl>
+                {% endif %}
+        {% endwith %}
+
+    </section>
+
+{% endblock %}

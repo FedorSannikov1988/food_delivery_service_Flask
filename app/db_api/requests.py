@@ -40,3 +40,12 @@ def add_user_in_database(name: str,
 
     db.session.add(new_user)
     db.session.commit()
+
+
+def searching_and_activating_user_account(email: str):
+
+    user = Users.query.get(email)
+
+    if user:
+        user.status = True
+        db.session.commit()

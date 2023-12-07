@@ -29,17 +29,26 @@
             <a class="link-for-menu" href="{{ url_for('contacts') }}">
                 Контакты
             </a>
+            <a class="link-for-menu" href="{{ url_for('user_registration') }}">
+                Регистрация
+            </a>
+            <a class="link-for-menu" href="{{ url_for('log_in_account') }}">
+                Вход в ЛК
+            </a>
         </div>
 
     </div>
 </header>
     {% block content %}{% endblock %}
-<footer>
-    <div id="content-footer" class="content-footer">
-        <p class="content-footer__text">
-            © 2023 Фантазии федора
-        </p>
-    </div>
-</footer>
+
+    <footer>
+        <div id="content-footer" class="content-footer">
+            <p class="content-footer__text">
+                © 2023 Фантазии федора
+            </p>
+        </div>
+    </footer>
+
+    {% block for_js %}{% endblock %}
 </body>
 </html>

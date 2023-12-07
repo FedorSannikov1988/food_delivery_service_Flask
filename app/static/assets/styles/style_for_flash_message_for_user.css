@@ -1,0 +1,39 @@
+.content-for-flash-message-for-user {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-for-flash-message-for-user__list-flash-messages {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    width: 500px;
+}
+
+.content-for-flash-message-for-user__flash-message_success {
+    color: #2fbb2f;
+    font-family: "Cousine-Bold";
+    font-size: 16px;
+    font-weight: 700;
+    line-height: normal;
+
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    text-align: center;
+}
+
+.content-for-flash-message-for-user__flash-message_error {
+    color: red;
+    font-family: "Cousine-Bold";
+    font-size: 16px;
+    font-weight: 700;
+    line-height: normal;
+
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    text-align: center;
+}

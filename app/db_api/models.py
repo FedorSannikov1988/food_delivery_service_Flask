@@ -1,5 +1,6 @@
+from config import db, \
+                       login_manager
 from flask_login import UserMixin
-from config import db, login_manager
 from werkzeug.security import check_password_hash, \
                               generate_password_hash
 
@@ -40,21 +41,26 @@ class Meal(db.Model):
 
 @login_manager.user_loader
 def load_user(user_id):
-    #return db.session.query(User).get(user_id)
     return Users.query.get(user_id)
 
 
 class Users(db.Model, UserMixin):
+    def __init__(self, name, surname, patronymic, date_birth, email, default_shipping_address):
+        self.name = name
+        self.surname = surname
+        self.patronymic = patronymic
+        self.date_birth = date_birth
+        self.email = email
+        self.default_shipping_address = default_shipping_address
 
     __tablename__ = 'users'
 
-    #id_user = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
     surname = db.Column(db.String(50), nullable=False)
     patronymic = db.Column(db.String(50), nullable=True)
     date_birth = db.Column(db.Date, nullable=False)
-    #email = db.Column(db.String(50), unique=True, nullable=False)
     email = db.Column(db.String(50), primary_key=True)
+    status = db.Column(db.Boolean, default=False)
     default_shipping_address = db.Column(db.String(1000), nullable=False)
     password_hash = db.Column(db.String(128), nullable=False)
 

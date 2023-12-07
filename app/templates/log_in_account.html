@@ -1,7 +1,7 @@
 {% extends 'basic_template.html' %}
 
 {% block for_css %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='assets/styles/style_for_user_registration.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/styles/style_log_in_account.css') }}">
 {% endblock %}
 
 {% block for_js %}
@@ -10,9 +10,9 @@
 
 {% block content %}
 
-    <section class="content-for-user-registration">
+    <section class="content-for-user-log-in-account">
 
-        <form id="form-for-user" class="content-for-user-registration__user-registration-form" action="{{ url_for('user_registration') }}" method="post">
+        <form id="form-for-user" class="content-for-user-log-in-account__user-log-in-account-form" action="{{ url_for('log_in_account') }}" method="post">
 
             {{ form.csrf_token }}
 
@@ -25,7 +25,7 @@
 
                         {% if field.errors %}
                             {% for error in field.errors %}
-                                <p class="content-for-user-registration__user-registration-form__errors">
+                                <p class="content-for-user-log-in-account__user-log-in-account-form__errors">
                                     {{ error }}
                                 </p>
                             {% endfor %}
@@ -33,16 +33,16 @@
                 </p>
             {% endfor %}
 
-            <div class="content-for-user-registration__wrapper-for-button" >
-                <input class="content-for-user-registration__register-button" type="submit" value="Зарегестрироваться">
+            <div class="content-for-user-log-in-account__wrapper-for-button">
+                <input class="content-for-user-log-in-account__entrance-button" type="submit" value="Войти">
             </div>
         </form>
 
         {% with messages = get_flashed_messages(with_categories=true) %}
                 {% if messages %}
-                    <dl class="content-for-user-registration__flash-messages">
+                    <dl class="content-for-user-log-in-account__flash-messages">
                     {% for category, message in messages %}
-                        <dd class="content-for-user-registration__flash-message_{{ category }}">{{ message }}</dd>
+                        <dd class="content-for-user-log-in-account__flash-message_{{ category }}">{{ message }}</dd>
                     {% endfor %}
                     </dl>
                 {% endif %}

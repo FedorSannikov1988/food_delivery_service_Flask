@@ -37,9 +37,9 @@
 
 .content-header {
     display: flex;
-    margin-left: 295px;
+    margin-left: auto;
     margin-right: auto;
-    align-items: flex-end;
+    justify-content: center;
     gap: 20px;
 }
 
@@ -65,9 +65,11 @@
     line-height: normal;
     margin-left: 20px;
 }
+
 .all-link-for-menu {
     display: flex;
     gap: 25px;
+    align-items: flex-end;
 }
 
 .all-link-for-menu :first-child {
@@ -83,7 +85,7 @@
 
     color: #000000;
     font-family: "Cousine-Regular";
-    font-size: 30px;
+    font-size: 15px;
     font-weight: 400;
     line-height: normal;
     transition: 250ms;
