@@ -1,5 +1,5 @@
-from config import mail, \
-                  Message
+from config import mail
+from flask_mail import Message
 
 
 def sent_mail(address: str,

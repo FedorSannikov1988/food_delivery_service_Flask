@@ -2,47 +2,58 @@ from datetime import datetime, \
                      timedelta
 from config import UPPER_AGE_YEARS, \
                    LOWER_AGE_YEARS, \
-                   TIME_TO_ACTIVATE_ACCOUNT_HOURS
+                   TIME_TO_ACTIVATE_ACCOUNT_HOURS, \
+                   DURATION_PASSWORD_RECOVERY_LINK_MINUTES
 
 
-DATE_FORMAT: str = "%Y-%m-%d"
-NUMBER_DAYS_PER_YEAR: int = 365
-DATE_AND_TIME_FORMAT: str = "%d.%m.%Y %H:%M:%S"
+class WorkingWithTimeInsideApp:
+    __data_format: str = "%Y-%m-%d"
+    __number_days_per_year: int = 365
+    __data_and_time_format: str = "%d.%m.%Y %H:%M:%S"
 
+    def checking_user_age(self, date_birth):
 
-def checking_user_age(date_birth: datetime.date) -> bool:
-    date_birt_str: str = str(date_birth)
+        date_birt_str: str = str(date_birth)
 
-    for_lower_bound: timedelta = \
-        timedelta(days=
-                  NUMBER_DAYS_PER_YEAR * LOWER_AGE_YEARS)
+        for_lower_bound: timedelta = \
+            timedelta(days=
+                      self.__number_days_per_year * LOWER_AGE_YEARS)
 
-    for_upper_bound: timedelta = \
-        timedelta(days=
-                  NUMBER_DAYS_PER_YEAR * UPPER_AGE_YEARS)
+        for_upper_bound: timedelta = \
+            timedelta(days=
+                      self.__number_days_per_year * UPPER_AGE_YEARS)
 
-    date_now: datetime = datetime.now()
+        date_now: datetime = datetime.now()
 
-    lower_bound = \
-        date_now - for_lower_bound
+        lower_bound = \
+            date_now - for_lower_bound
 
-    upper_bound = \
-        date_now - for_upper_bound
+        upper_bound = \
+            date_now - for_upper_bound
 
-    conversion_date = \
-        datetime.strptime(date_birt_str, DATE_FORMAT)
+        conversion_date = \
+            datetime.strptime(date_birt_str, self.__data_format)
 
-    return upper_bound <= conversion_date <= lower_bound
+        return upper_bound <= conversion_date <= lower_bound
 
+    def get_data_and_time(self) -> str:
+        return datetime.now().strftime(self.__data_and_time_format)
 
-def get_data_and_time() -> str:
-    return datetime.now().strftime(DATE_AND_TIME_FORMAT)
+    def checking_date_and_time_registration_user(self,
+                                                 date_and_time_registration_user: str) -> bool:
 
+        conversion_date = \
+            datetime.strptime(date_and_time_registration_user,
+                              self.__data_and_time_format)
 
-def checking_date_and_time_registration_user(date_and_time_registration_user: str) -> bool:
+        return conversion_date + timedelta(hours=TIME_TO_ACTIVATE_ACCOUNT_HOURS) >= datetime.now()
 
-    conversion_date = \
-        datetime.strptime(date_and_time_registration_user,
-                          DATE_AND_TIME_FORMAT)
+    def checking_time_password_recovery_request(self,
+                                                time_receipt_request: str) -> bool:
 
-    return conversion_date + timedelta(hours=TIME_TO_ACTIVATE_ACCOUNT_HOURS) >= datetime.now()
+        conversion_date = \
+            datetime.strptime(time_receipt_request,
+                              self.__data_and_time_format)
+
+        return conversion_date + timedelta(minutes=DURATION_PASSWORD_RECOVERY_LINK_MINUTES) >= datetime.now()
+

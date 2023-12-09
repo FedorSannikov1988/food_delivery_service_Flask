@@ -1,0 +1,10 @@
+.wrapper_content-for-mistake_404 {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-for-mistake_404__img {
+    width: 1000px;
+}

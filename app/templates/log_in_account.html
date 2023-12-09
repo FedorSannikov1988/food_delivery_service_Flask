@@ -1,7 +1,7 @@
 {% extends 'basic_template.html' %}
 
 {% block for_css %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='assets/styles/style_log_in_account.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/styles/style_for_log_in_account.css') }}">
 {% endblock %}
 
 {% block for_js %}
@@ -12,29 +12,43 @@
 
     <section class="content-for-user-log-in-account">
 
+        <h2 class="content-for-user-log-in-account__title">
+            Вход в личный кабинет
+        </h2>
+
         <form id="form-for-user" class="content-for-user-log-in-account__user-log-in-account-form" action="{{ url_for('log_in_account') }}" method="post">
 
             {{ form.csrf_token }}
 
-            {% for field in form if field.name != 'csrf_token' %}
+            <div class="content-for-user-log-in-account__user-log-in-account-form__wrapper_fields_and_button">
 
-                <p>
-                    {{ field.label }}
-                    <br>
-                    {{ field }}
+                {% for field in form if field.name != 'csrf_token' %}
+                    <p>
+                        {{ field.label }}
+                        <br>
+                        {{ field }}
 
-                        {% if field.errors %}
-                            {% for error in field.errors %}
-                                <p class="content-for-user-log-in-account__user-log-in-account-form__errors">
-                                    {{ error }}
-                                </p>
-                            {% endfor %}
-                        {% endif %}
-                </p>
-            {% endfor %}
+                            {% if field.errors %}
+                                {% for error in field.errors %}
+                                    <p class="content-for-user-log-in-account__user-log-in-account-form__errors">
+                                        {{ error }}
+                                    </p>
+                                {% endfor %}
+                            {% endif %}
+                    </p>
+                {% endfor %}
 
-            <div class="content-for-user-log-in-account__wrapper-for-button">
-                <input class="content-for-user-log-in-account__entrance-button" type="submit" value="Войти">
+                <div class="content-for-user-log-in-account__wrapper-for-button">
+                    <input class="content-for-user-log-in-account__entrance-button" type="submit" value="Войти">
+                </div>
+
+                <div class="content-for-user-log-in-account__user-log-in-account-form__wrapper_link_forget_password" >
+                    <a class="content-for-user-log-in-account__user-log-in-account-form__link_forget_password"
+                       href="{{ url_for('forget_password_enter_email') }}">
+                        Забыли пароль ?
+                    </a>
+                </div>
+
             </div>
         </form>
 

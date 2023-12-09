@@ -1,9 +1,10 @@
-from sqlalchemy import asc
-from datetime import datetime
 from .models import db, \
                     Meal, \
                     Users, \
                     CategoriesMeal
+from sqlalchemy import asc
+from typing import Optional
+from datetime import datetime
 
 
 def search_for_categories_meal_by_name(search_category_name: str) -> tuple:
@@ -22,7 +23,8 @@ def get_all_categories_meal() -> tuple:
 def add_user_in_database(name: str,
                          surname: str,
                          patronymic: str,
-                         date_birth: datetime,
+                         date_birth: datetime.date,
+                         telephone: str,
                          email: str,
                          default_shipping_address: str,
                          password: str) -> None:
@@ -31,6 +33,7 @@ def add_user_in_database(name: str,
                      surname=surname,
                      patronymic=patronymic,
                      date_birth=date_birth,
+                     telephone=telephone,
                      email=email,
                      default_shipping_address=
                      default_shipping_address)
@@ -42,10 +45,23 @@ def add_user_in_database(name: str,
     db.session.commit()
 
 
-def searching_and_activating_user_account(email: str):
+def searching_and_activating_user_account(email: str) -> None:
 
     user = Users.query.get(email)
 
     if user:
         user.status = True
         db.session.commit()
+
+
+def searching_user_account(email: str) -> Optional[Users]:
+
+    user = Users.query.get(email)
+    return user
+
+
+def searching_user_account_and_setting_new_password(email: str,
+                                                    password: str) -> None:
+    user = Users.query.get(email)
+    user.set_password(password=password)
+    db.session.commit()

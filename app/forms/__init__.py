@@ -1,2 +1,4 @@
-from .registration_user import UserRegistration
 from .log_in_account import UserLogIn
+from .registration_user import UserRegistration
+from .forget_password_entering_email import ForgetPasswordEnteringEmail
+from .forget_password_enter_new_password import ForgetPasswordEnterNewPassword

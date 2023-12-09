@@ -1,12 +1,12 @@
 from config import db, \
-                       login_manager
+    login_manager
+from datetime import datetime
 from flask_login import UserMixin
 from werkzeug.security import check_password_hash, \
-                              generate_password_hash
+    generate_password_hash
 
 
 class CategoriesMeal(db.Model):
-
     __tablename__ = 'сategories_meal'
 
     category_meal_name = db.Column(db.String, primary_key=True)
@@ -18,7 +18,6 @@ class CategoriesMeal(db.Model):
 
 
 class Meal(db.Model):
-
     __tablename__ = 'meal'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -27,7 +26,7 @@ class Meal(db.Model):
     category_meal_name = db.Column(db.String,
                                    db.ForeignKey('сategories_meal.category_meal_name'),
                                    nullable=False)
-    description = db.Column(db.String,  nullable=True)
+    description = db.Column(db.String, nullable=True)
     proteins = db.Column(db.Float, nullable=True)
     fats = db.Column(db.Float, nullable=True)
     carbohydrates = db.Column(db.Float, nullable=True)
@@ -45,20 +44,31 @@ def load_user(user_id):
 
 
 class Users(db.Model, UserMixin):
-    def __init__(self, name, surname, patronymic, date_birth, email, default_shipping_address):
+    def __init__(self,
+                 name: str,
+                 surname: str,
+                 patronymic: str,
+                 date_birth: datetime.date,
+                 telephone: str,
+                 email: str,
+                 default_shipping_address: str):
+
         self.name = name
         self.surname = surname
         self.patronymic = patronymic
         self.date_birth = date_birth
+        self.telephone = telephone
         self.email = email
         self.default_shipping_address = default_shipping_address
 
     __tablename__ = 'users'
 
+    path_photo = db.Column(db.String, nullable=True)
     name = db.Column(db.String(50), nullable=False)
     surname = db.Column(db.String(50), nullable=False)
     patronymic = db.Column(db.String(50), nullable=True)
     date_birth = db.Column(db.Date, nullable=False)
+    telephone = db.Column(db.String(11), nullable=False)
     email = db.Column(db.String(50), primary_key=True)
     status = db.Column(db.Boolean, default=False)
     default_shipping_address = db.Column(db.String(1000), nullable=False)

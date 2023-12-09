@@ -12,6 +12,10 @@
 
     <section class="content-for-user-registration">
 
+        <h2 class="content-for-user-registration__title">
+            Регистрация
+        </h2>
+
         <form id="form-for-user" class="content-for-user-registration__user-registration-form" action="{{ url_for('user_registration') }}" method="post">
 
             {{ form.csrf_token }}
@@ -47,6 +51,32 @@
                     </dl>
                 {% endif %}
         {% endwith %}
+
+    <div class="explanation_color_form_fields">
+        <p class="explanation_color_form_fields__title">
+            Пояснение к цвету полей:
+        </p>
+
+        <div class="explanation_color_form_fields__required_field">
+            <div class="wrapper_explanation_color_form_fields__required_field">
+                <div class="explanation_color_form_fields__required_field_color"></div>
+                <div class="explanation_color_form_fields__required_field_text">
+                    <span>
+                          - обязательное поле
+                    </span>
+                </div>
+            </div>
+            <div class="wrapper_explanation_color_form_fields__not_required_field">
+                <div class="explanation_color_form_fields__not_required_field_color"></div>
+                <div class="explanation_color_form_fields__not_required_field_text">
+                    <span>
+                          - не обязательное поле
+                    </span>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
     </section>
 

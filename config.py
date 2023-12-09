@@ -2,8 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_migrate import Migrate
 from dotenv import load_dotenv
-from flask_mail import Mail, \
-                       Message
+from flask_mail import Mail
 from loguru import logger
 from flask import Flask
 import os
@@ -12,6 +11,7 @@ import os
 LOWER_AGE_YEARS: int = 18
 UPPER_AGE_YEARS: int = 100
 TIME_TO_ACTIVATE_ACCOUNT_HOURS: int = 24
+DURATION_PASSWORD_RECOVERY_LINK_MINUTES: int = 60
 
 
 logger.add('logs/logs.json',

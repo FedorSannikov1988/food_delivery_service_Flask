@@ -1,3 +1,13 @@
+.content-for-user-registration__title {
+    color: #91b90a;
+    font-family: "Cousine-Bold";
+    font-size: 50px;
+    font-weight: 700;
+    line-height: normal;
+
+    margin-top: 50px;
+}
+
 .content-for-user-registration {
     min-height: 100vh;
     display: flex;
@@ -132,6 +142,23 @@
     border: 1px solid #000000;
 }
 
+.content-for-user-registration__user-registration-form #telephone {
+    width: var(--form-width-text);
+    height: var(--form-height-text);
+
+    font-family: var(--font-family-text);
+    font-size: var(--font-size-text);
+    font-weight: var(--font-weight-text);
+    line-height: var(--font-line-height);
+
+    padding-left: var(--font-padding-left);
+    padding-right: var(--font-padding-right);
+
+    margin-bottom: var(--font-margin-bottom);
+
+    border: 1px solid #000000;
+}
+
 .content-for-user-registration__user-registration-form #default_shipping_address {
     width: var(--form-width-text);
     height: 80px;
@@ -211,7 +238,7 @@
 .content-for-user-registration__register-button:hover {
     color: white;
     background: #91b90a;
-    border: none;
+    border: 2px solid #91b90a;
 }
 
 .content-for-user-registration__flash-messages {
@@ -233,3 +260,67 @@
     text-align: center;
 }
 
+.explanation_color_form_fields {
+    margin-top: 30px;
+}
+
+.explanation_color_form_fields__required_field {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.wrapper_explanation_color_form_fields__required_field {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.wrapper_explanation_color_form_fields__not_required_field {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.explanation_color_form_fields__title {
+    color: #000;
+    font-family: "Cousine-Regular";
+    font-size: 12px;
+    font-weight: 400;
+    line-height: normal;
+    margin-left: 4px;
+}
+
+.explanation_color_form_fields__required_field_color {
+    background-color: #e3e3e3;
+    width: 20px;
+    height: 15px;
+    border: 1px solid #000000;
+}
+
+.explanation_color_form_fields__not_required_field_color {
+    background-color: #ffffff;
+    width: 20px;
+    height: 15px;
+    border: 1px solid #000000;
+}
+
+.explanation_color_form_fields__required_field_text {
+    color: #000;
+    font-family: "Cousine-Regular";
+    font-size: 12px;
+    font-weight: 400;
+    line-height: normal;
+    margin-left: 4px;
+}
+
+.explanation_color_form_fields__not_required_field_text {
+    color: #000;
+    font-family: "Cousine-Regular";
+    font-size: 12px;
+    font-weight: 400;
+    line-height: normal;
+    margin-left: 4px;
+}

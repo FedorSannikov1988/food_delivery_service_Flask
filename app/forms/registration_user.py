@@ -15,6 +15,12 @@ class UserRegistration(FlaskForm):
     surname = StringField('Фамилия', validators=[DataRequired(), Length(max=50)])
     patronymic = StringField('Отчество', validators=[Length(max=50)])
     date_birth = DateField('Дата рождения', validators=[DataRequired()])
+    telephone = StringField('Телефон',
+                            validators=[DataRequired(),
+                                        Length(min=6, max=11),
+                                        Regexp(r'^\d+$',
+                                        message=
+                                        'Номер телефона толжен содержать только цифры')])
     email = StringField('Email', validators=[DataRequired(), Email(), Length(max=50)])
     default_shipping_address = TextAreaField('Адрес доставки по умолчанию',
                                            validators=[DataRequired(), Length(max=1000)])
