@@ -1,7 +1,7 @@
 [
     {
         "title": "Салат Винегрет с селёдочкой",
-        "category_meal_name": "Cалаты",
+        "category_meal_name": "Салаты",
         "file_path_image": "salad_vinaigrette_with_herring.jpg",
         "description": "Картофель, капуста, свекла. сельдь, морковь, огурцы консервированные, горошек зеленый, лук репчатый, масло подсолнечное, соль.",
         "proteins": 4.2,
@@ -13,7 +13,7 @@
     },
     {
         "title": "Салат Витаминный",
-        "category_meal_name": "Cалаты",
+        "category_meal_name": "Салаты",
         "file_path_image": "salad_vitamin.jpg",
         "description": "Капуста, яблоко, морковь, масло.",
         "proteins": 1,
@@ -25,7 +25,7 @@
     },
     {
         "title": "Салат Грузинский",
-        "category_meal_name": "Cалаты",
+        "category_meal_name": "Салаты",
         "file_path_image": "salad_georgian.jpg",
         "description": "Томат, огурец, красный лук, грецкий орех, чеснок, кинза, базилик, петрушка.",
         "proteins": 2.7,
@@ -37,7 +37,7 @@
     },
     {
         "title": "Салат Морковь острая",
-        "category_meal_name": "Cалаты",
+        "category_meal_name": "Салаты",
         "file_path_image": "salad_spicy_carrot.jpg",
         "description": "Морковь, лук, чеснок, соус соевый, масло.",
         "proteins": 1.5,
@@ -49,7 +49,7 @@
     },
     {
         "title": "Салат Цезарь",
-        "category_meal_name": "Cалаты",
+        "category_meal_name": "Салаты",
         "file_path_image": "salad_сaesar.jpg",
         "description": "Куриное филе, сыр, помидоры, лист салата, сухари, чеснок, майонез.",
         "proteins": 9.5,
@@ -61,7 +61,7 @@
     },
     {
         "title": "Салат с горбушей и моцареллой",
-        "category_meal_name": "Cалаты",
+        "category_meal_name": "Салаты",
         "file_path_image": "salad_with_pink_salmon_and_mozzarella.jpg",
         "description": "Горбуша, яйцо, томаты черри, сыр мацарелла, лист салата, сок лимона, кинза, соль, перец черный молотый, масло оливсковое, масло растительное.",
         "proteins": 11.3,
