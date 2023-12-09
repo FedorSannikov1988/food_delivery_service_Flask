@@ -47,7 +47,7 @@ def add_user_in_database(name: str,
 
 def searching_and_activating_user_account(email: str) -> None:
 
-    user = Users.query.get(email)
+    user = Users.query.filter_by(email=email).first()
 
     if user:
         user.status = True
@@ -56,12 +56,13 @@ def searching_and_activating_user_account(email: str) -> None:
 
 def searching_user_account(email: str) -> Optional[Users]:
 
-    user = Users.query.get(email)
+    user = Users.query.filter_by(email=email).first()
     return user
 
 
 def searching_user_account_and_setting_new_password(email: str,
                                                     password: str) -> None:
-    user = Users.query.get(email)
+
+    user = Users.query.filter_by(email=email).first()
     user.set_password(password=password)
     db.session.commit()

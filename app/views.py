@@ -14,7 +14,9 @@ from .forms import UserLogIn, \
                    UserRegistration, \
                    ForgetPasswordEnteringEmail, \
                    ForgetPasswordEnterNewPassword
-from flask_login import login_user
+from flask_login import login_user, \
+                        logout_user, \
+                        login_required
 from .utilities import WorkingWithToken, \
                        WorkingWithTimeInsideApp
 from .db_api import add_user_in_database, \
@@ -218,20 +220,16 @@ def log_in_account():
 
     if request.method == 'POST' and form.validate():
 
-        email = form.email.data
-        password = form.password.data
-
-        searching_user_account(email=email)
-        print(email)
-        print(password)
+        email: str = form.email.data
+        password: str = form.password.data
+        remember: bool = form.remember.data
 
         user = searching_user_account(email=email)
 
         if user and user.check_password(password=password):
             if user.status:
-                #login_user(user, remember=form.remember.data)
-                print('Вошол в личный кабинет')
-                #return redirect(url_for('personal_account'))
+                login_user(user, remember=remember)
+                return redirect(url_for('personal_account'))
             else:
                 text: str = \
                     f'Ваша учетная запись не активирована.'
@@ -250,6 +248,19 @@ def log_in_account():
         'title_pag': 'Вход в личный кабинет'
     }
     return render_template('log_in_account.html', form=form, **context)
+
+
+@app.route('/personal_account/')
+@login_required
+def personal_account():
+    return render_template('personal_account.html')
+
+
+@app.route('/log_out_personal_account/')
+@login_required
+def log_out_personal_account():
+    logout_user()
+    return redirect(url_for('index'))
 
 
 @app.route('/forget_password_enter_email/', methods=['GET', 'POST'])
