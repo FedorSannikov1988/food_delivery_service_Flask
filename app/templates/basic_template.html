@@ -29,12 +29,21 @@
             <a class="link-for-menu" href="{{ url_for('contacts') }}">
                 Контакты
             </a>
-            <a class="link-for-menu" href="{{ url_for('user_registration') }}">
-                Регистрация
-            </a>
-            <a class="link-for-menu" href="{{ url_for('log_in_account') }}">
-                Вход в ЛК
-            </a>
+
+            {% if not current_user.is_authenticated %}
+
+                <a class="link-for-menu" href="{{ url_for('user_registration') }}">
+                    Регистрация
+                </a>
+
+                <a class="link-for-menu" href="{{ url_for('log_in_account') }}">
+                    Вход в ЛК
+                </a>
+            {% elif current_user.is_authenticated %}
+                <a class="link-for-menu" href="{{ url_for('log_out_personal_account') }}">
+                    Выйти из ЛК
+                </a>
+            {% endif %}
         </div>
 
     </div>

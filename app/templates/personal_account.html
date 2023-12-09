@@ -5,15 +5,31 @@
 {% endblock %}
 
 {% block content %}
-    <ul>
-        <li> {{ current_user.name }} </li>
-        <li> {{ current_user.surname }} </li>
-        <li> {{ current_user.patronymic }} </li>
-        <li> {{ current_user.date_birth }} </li>
-        <li> {{ current_user.telephone }} </li>
-        <li> {{ current_user.email }} </li>
-        <li> {{ current_user.default_shipping_address }} </li>
-    </ul>
 
-<p><a href="{{ url_for('log_out_personal_account') }}">Logout</a></p>
+    <section>
+
+                {% if not current_user.path_photo %}
+
+                    <img class="content-for-index__product_card__img"
+                                     src="{{ url_for('static', filename='assets/pic/if_no_photo.png') }}"
+                                     alt="Фотография {{ current_user.name }}">
+
+                {% elif current_user.path_photo %}
+
+                {% endif %}
+
+        <ul>
+            <li> {{ current_user.name }} </li>
+            <li> {{ current_user.surname }} </li>
+            <li> {{ current_user.patronymic }} </li>
+            <li> {{ current_user.date_birth }} </li>
+            <li> {{ current_user.telephone }} </li>
+            <li> {{ current_user.email }} </li>
+            <li> {{ current_user.default_shipping_address }} </li>
+        </ul>
+
+    </section>
+
+
+
 {% endblock %}
