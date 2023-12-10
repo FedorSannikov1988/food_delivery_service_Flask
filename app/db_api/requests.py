@@ -1,3 +1,4 @@
+import copy
 from .models import db, \
                     Meal, \
                     Users, \
@@ -28,7 +29,6 @@ def add_user_in_database(name: str,
                          email: str,
                          default_shipping_address: str,
                          password: str) -> None:
-
     new_user = Users(name=name,
                      surname=surname,
                      patronymic=patronymic,
@@ -46,7 +46,6 @@ def add_user_in_database(name: str,
 
 
 def searching_and_activating_user_account(email: str) -> None:
-
     user = Users.query.filter_by(email=email).first()
 
     if user:
@@ -55,14 +54,24 @@ def searching_and_activating_user_account(email: str) -> None:
 
 
 def searching_user_account(email: str) -> Optional[Users]:
-
     user = Users.query.filter_by(email=email).first()
     return user
 
 
 def searching_user_account_and_setting_new_password(email: str,
                                                     password: str) -> None:
-
     user = Users.query.filter_by(email=email).first()
     user.set_password(password=password)
     db.session.commit()
+
+
+def add_user_photo(email: str, new_path_photo: str) -> str:
+
+    user = Users.query.filter_by(email=email).first()
+
+    path_photo_old: str = user.path_photo
+
+    user.path_photo = new_path_photo
+    db.session.commit()
+
+    return path_photo_old

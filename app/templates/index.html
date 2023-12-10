@@ -62,8 +62,13 @@
                         {% for one_meal in one_category_meal.information_about_meals %}
 
                             <div class="content-for-index__product_card">
+
                                 <img class="content-for-index__product_card__img"
+                                {% if one_meal.file_path_image %}
                                      src="{{ url_for('media', filename=one_meal.file_path_image) }}"
+                                {% elif not one_meal.file_path_image %}
+                                     src="{{ url_for('static', filename='assets/pic/no_picture_food.png') }}"
+                                {% endif %}
                                      alt="{{ one_meal.title }}">
 
                                 <!--

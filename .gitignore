@@ -6,9 +6,11 @@ instance/*
 
 migrations/
 
-media/
+media/*
 
 logs/
+
+my_folder/*
 
 ### Flask.Python Stack ###
 # Byte-compiled / optimized / DLL files

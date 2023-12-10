@@ -3,6 +3,8 @@ from config import app, \
                    UPPER_AGE_YEARS, \
                    TIME_TO_ACTIVATE_ACCOUNT_HOURS, \
                    DURATION_PASSWORD_RECOVERY_LINK_MINUTES
+from pathlib import Path, \
+                    PurePath
 from flask import flash, \
                   url_for, \
                   request, \
@@ -18,19 +20,27 @@ from flask_login import login_user, \
                         logout_user, \
                         current_user, \
                         login_required
-from .utilities import WorkingWithToken, \
+from .utilities import WorkingWithFiles, \
+                       WorkingWithToken, \
                        WorkingWithTimeInsideApp
-from .db_api import add_user_in_database, \
+from .db_api import add_user_photo, \
+                    add_user_in_database, \
                     searching_user_account,\
                     get_all_categories_meal, \
                     searching_and_activating_user_account, \
                     searching_user_account_and_setting_new_password
 from sqlalchemy.exc import IntegrityError
+from werkzeug.utils import secure_filename
 
 
 @app.route('/media/<path:filename>')
 def media(filename):
     return send_from_directory('media', filename)
+
+
+@app.route('/user_photos/<path:filename>')
+def user_photos(filename):
+    return send_from_directory('user_photos', filename)
 
 
 @app.route('/')
@@ -251,12 +261,34 @@ def log_in_account():
     return render_template('log_in_account.html', form=form, **context)
 
 
-@app.route('/personal_account/')
+@app.route('/personal_account/', methods=['GET', 'POST'])
 @login_required
 def personal_account():
 
+    if request.method == 'POST':
+        file = request.files.get('file')
+        file_name = secure_filename(file.filename)
+
+        if file:
+
+            name_old_photo = add_user_photo(email=current_user.email,
+                                            new_path_photo=file_name)
+
+            if name_old_photo:
+
+                path_old_photo = \
+                    WorkingWithFiles.generating_path_file_in_folder__user_photos(name_file=
+                                                                                 name_old_photo)
+
+                WorkingWithFiles(path_to_file=path_old_photo).delete_file()
+
+            path_new_photo = \
+                WorkingWithFiles.generating_path_file_in_folder__user_photos(name_file=
+                                                                             file_name)
+            file.save(path_new_photo)
+
     context = {
-        'title_pag': ' Личный кабинет',
+        'title_pag': 'Личный кабинет',
         'date_birth': current_user.date_birth.strftime('%d.%m.%Y')
     }
     return render_template('personal_account.html', **context)

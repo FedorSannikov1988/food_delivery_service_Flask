@@ -8,19 +8,23 @@
 
     <section>
         <div class="content-for-personal-account">
-            {% if not current_user.path_photo %}
 
                 <p class="content-for-personal-account__circle-image">
 
                     <img class="content-for-personal-account__image"
-                     src="{{ url_for('static', filename='assets/pic/if_no_photo.png') }}"
-                     alt="Фотография {{ current_user.name }}">
-
+                     {% if not current_user.path_photo %}
+                         src="{{ url_for('static', filename='assets/pic/if_no_photo.png') }}"
+                     {% elif current_user.path_photo %}
+                         src="{{ url_for('user_photos', filename=current_user.path_photo) }}"
+                     {% endif %}
+                         alt="Фотография {{ current_user.name }}">
                 </p>
 
-            {% elif current_user.path_photo %}
 
-            {% endif %}
+                <form class="content-for-personal-account__set-user-photo" method="post" enctype="multipart/form-data" action="{{ url_for('personal_account') }}">
+                    <input class="content-for-personal-account__set-user-photo__download_file" name="file" type="file" id="upload-photo">
+                    <input class="content-for-personal-account__set-user-photo__download_button" type="submit" value="Загрузить">
+                </form>
 
             <div class="content-for-personal-account__user-information">
                 <div class="content-for-personal-account__personal-information">
