@@ -40,6 +40,11 @@
                     Вход в ЛК
                 </a>
             {% elif current_user.is_authenticated %}
+
+                <a class="link-for-menu" href="{{ url_for('personal_account') }}">
+                    Личный кабинет
+                </a>
+
                 <a class="link-for-menu" href="{{ url_for('log_out_personal_account') }}">
                     Выйти из ЛК
                 </a>

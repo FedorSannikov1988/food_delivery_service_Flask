@@ -16,6 +16,7 @@ from .forms import UserLogIn, \
                    ForgetPasswordEnterNewPassword
 from flask_login import login_user, \
                         logout_user, \
+                        current_user, \
                         login_required
 from .utilities import WorkingWithToken, \
                        WorkingWithTimeInsideApp
@@ -253,7 +254,12 @@ def log_in_account():
 @app.route('/personal_account/')
 @login_required
 def personal_account():
-    return render_template('personal_account.html')
+
+    context = {
+        'title_pag': ' Личный кабинет',
+        'date_birth': current_user.date_birth.strftime('%d.%m.%Y')
+    }
+    return render_template('personal_account.html', **context)
 
 
 @app.route('/log_out_personal_account/')
@@ -378,14 +384,25 @@ def forget_password_enter_new_password(token: str = ' '):
     return render_template('forget_password_enter_new_password.html', form=form, **context)
 
 
-@app.errorhandler(404)
-def page_not_found(e):
-    app.logger.warning(e)
+@app.errorhandler(401)
+def page_not_found(error):
+    print(error)
     context = {
-        'title_page': 'Страница не найдена',
-        'url': request.base_url
+        'title_page': 'Ошибка 401'
+    }
+    return render_template('mistake_401.html', **context)
+
+
+@app.errorhandler(404)
+def page_not_found(error):
+    print(error)
+    context = {
+        'title_page': 'Ошибка 404'
     }
     return render_template('mistake_404.html', **context)
+
+
+
 
 
 if __name__ == '__main__':

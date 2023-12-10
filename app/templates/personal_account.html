@@ -7,29 +7,52 @@
 {% block content %}
 
     <section>
+        <div class="content-for-personal-account">
+            {% if not current_user.path_photo %}
 
-                {% if not current_user.path_photo %}
+                <p class="content-for-personal-account__circle-image">
 
-                    <img class="content-for-index__product_card__img"
-                                     src="{{ url_for('static', filename='assets/pic/if_no_photo.png') }}"
-                                     alt="Фотография {{ current_user.name }}">
+                    <img class="content-for-personal-account__image"
+                     src="{{ url_for('static', filename='assets/pic/if_no_photo.png') }}"
+                     alt="Фотография {{ current_user.name }}">
 
-                {% elif current_user.path_photo %}
+                </p>
 
-                {% endif %}
+            {% elif current_user.path_photo %}
 
-        <ul>
-            <li> {{ current_user.name }} </li>
-            <li> {{ current_user.surname }} </li>
-            <li> {{ current_user.patronymic }} </li>
-            <li> {{ current_user.date_birth }} </li>
-            <li> {{ current_user.telephone }} </li>
-            <li> {{ current_user.email }} </li>
-            <li> {{ current_user.default_shipping_address }} </li>
-        </ul>
+            {% endif %}
 
+            <div class="content-for-personal-account__user-information">
+                <div class="content-for-personal-account__personal-information">
+                    <p class="content-for-personal-account__user-information__section__header">
+                        Личная информация
+                    </p>
+                    <p> Имя: {{ current_user.name }} </p>
+                    <p> Фамилия: {{ current_user.surname }} </p>
+
+                    {% if current_user.patronymic %}
+                        <p> Отчество: {{ current_user.patronymic }} </p>
+                    {% endif %}
+
+                    <p> Дата рождения: {{ date_birth }} </p>
+                </div>
+                <div class="content-for-personal-account__сontact-information">
+                    <p class="content-for-personal-account__user-information__section__header">
+                        Контактные данные
+                    </p>
+                    <p> Телефон: {{ current_user.telephone }} </p>
+                    <p> Электронная почта: </p>
+                    <p> {{ current_user.email }} </p>
+                </div>
+                <div class="content-for-personal-account__delivery-address">
+                    <p class="content-for-personal-account__user-information__section__header">
+                         Адрес доставки по умолчанию
+                    </p>
+                    <br>
+                    <p> {{ current_user.default_shipping_address }} </p>
+                </div>
+            </div>
+
+        </div>
     </section>
-
-
-
 {% endblock %}

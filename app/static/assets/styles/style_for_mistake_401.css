@@ -12,7 +12,7 @@
     line-height: normal;
 }
 
-.wrapper_content-for-mistake-404 {
+.wrapper_content-for-mistake-401 {
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -20,7 +20,7 @@
     flex-direction: column;
 }
 
-.wrapper_content-for-mistake-404__title {
+.wrapper_content-for-mistake-401__title {
     color: #e71313;
     font-family: "Cousine-Bold";
     font-size: 60px;
@@ -28,7 +28,7 @@
     line-height: normal;
 }
 
-.wrapper_content-for-mistake-404__description {
+.wrapper_content-for-mistake-401__description {
     color: #e71313;
     font-family: "Cousine-Regular";
     font-size: 25px;
