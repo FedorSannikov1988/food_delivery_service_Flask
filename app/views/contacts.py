@@ -6,7 +6,7 @@ from flask import render_template
 def contacts():
 
     context = {
-        'title_pag': 'Контакты'
+        'title_page': 'Контакты'
     }
     return render_template('сontacts.html', **context)
 

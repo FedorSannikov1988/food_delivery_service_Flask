@@ -71,7 +71,7 @@ def forget_password_enter_new_password(token: str = ' '):
             flash(text, 'error')
 
     context = {
-        'title_pag': 'Забыли пароль - ввод нового пароля',
+        'title_page': 'Забыли пароль - ввод нового пароля',
         'show_form': show_form,
         'token': token
     }

@@ -16,20 +16,20 @@
             Вход в личный кабинет
         </h2>
 
-        <form id="form-for-user" class="content-for-user-log-in-account__user-log-in-account-form" action="{{ url_for('log_in_account') }}" method="post">
+            <form id="form-for-user" class="content-for-user-log-in-account__user-log-in-account-form" action="{{ url_for('log_in_account') }}" method="post">
 
-            {{ form.csrf_token }}
+                {{ form.csrf_token }}
 
-            <div class="content-for-user-log-in-account__user-log-in-account-form__wrapper_fields_and_button">
+                <div class="content-for-user-log-in-account__user-log-in-account-form__wrapper_fields_and_button">
 
-                {% for field in form if field.name != 'csrf_token' %}
-                    <p>
-                        {{ field.label }}
-                        <br>
-                        {{ field }}
+                    {% for field in form if field.name != 'csrf_token' %}
+                        <p>
+                            {{ field.label }}
+                            <br>
+                            {{ field }}
 
-                            {% if field.errors %}
-                                {% for error in field.errors %}
+                                {% if field.errors %}
+                                    {% for error in field.errors %}
                                     <p class="content-for-user-log-in-account__user-log-in-account-form__errors">
                                         {{ error }}
                                     </p>

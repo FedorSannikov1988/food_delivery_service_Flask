@@ -7,9 +7,15 @@
 {% block content %}
 
     <section>
+
         <div class="content-for-personal-account">
 
+            <h2 class="content-for-personal-account__title">
+                Личный кабинет
+            </h2>
+
                 <p class="content-for-personal-account__circle-image">
+
 
                     <img class="content-for-personal-account__image"
                      {% if not current_user.path_photo %}
@@ -51,6 +57,14 @@
                     {% endif %}
 
                     <p> Дата рождения: {{ date_birth }} </p>
+                    <div class="wrapper_for_edit_button">
+                        <a class="content-for-personal-account__edit_button__link"
+                           href="{{ url_for('personal_account_change_personal_data') }}">
+                            <button class="content-for-personal-account__edit_button">
+                                    Изменить
+                            </button>
+                        </a>
+                    </div>
                 </div>
                 <div class="content-for-personal-account__сontact-information">
                     <p class="content-for-personal-account__user-information__section__header">
@@ -66,6 +80,28 @@
                     </p>
                     <br>
                     <p> {{ current_user.default_shipping_address }} </p>
+                    <div class="wrapper_for_edit_button">
+                        <a class="content-for-personal-account__edit_button__link"
+                           href="{{ url_for('personal_account_change_delivery_address') }}">
+                            <button class="content-for-personal-account__edit_button">
+                                    Изменить
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-for-personal-account__delivery-password">
+                <p class="content-for-personal-account__user-information__section__header">
+                    Пароль
+                </p>
+                <div class="wrapper_for_edit_button">
+                    <a class="content-for-personal-account__edit_button__link"
+                       href="{{ url_for('personal_account_change_password') }}">
+                        <button class="content-for-personal-account__edit_button">
+                            Изменить
+                        </button>
+                    </a>
                 </div>
             </div>
 

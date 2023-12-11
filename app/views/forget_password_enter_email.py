@@ -50,7 +50,7 @@ def forget_password_enter_email():
             flash(text, 'error')
 
     context = {
-        'title_pag': 'Забыли пароль - ввод электронной почты'
+        'title_page': 'Забыли пароль - ввод электронной почты'
     }
     return render_template('forget_password_enter_email.html', form=form, **context)
 

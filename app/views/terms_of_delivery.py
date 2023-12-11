@@ -6,7 +6,7 @@ from flask import render_template
 def terms_of_delivery():
 
     context = {
-        'title_pag': 'Условия доставки'
+        'title_page': 'Условия доставки'
     }
     return render_template('terms_of_delivery.html', **context)
 

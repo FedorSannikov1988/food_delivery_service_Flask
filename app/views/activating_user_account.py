@@ -55,7 +55,7 @@ def activating_user_account(token: str = ''):
             flash(text, 'error')
 
     context = {
-        'title_pag': 'Активация аккаунта'
+        'title_page': 'Активация аккаунта'
     }
     return render_template('flash_message_for_user.html', **context)
 

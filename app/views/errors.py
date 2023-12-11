@@ -4,7 +4,9 @@ from flask import render_template
 
 @app.errorhandler(401)
 def page_not_found(error):
+
     print(error)
+
     context = {
         'title_page': 'Ошибка 401'
     }
@@ -13,7 +15,9 @@ def page_not_found(error):
 
 @app.errorhandler(404)
 def page_not_found(error):
+
     print(error)
+
     context = {
         'title_page': 'Ошибка 404'
     }

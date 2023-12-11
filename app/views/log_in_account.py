@@ -41,7 +41,7 @@ def log_in_account():
             return redirect(url_for('log_in_account'))
 
     context = {
-        'title_pag': 'Вход в личный кабинет'
+        'title_page': 'Вход в личный кабинет'
     }
     return render_template('log_in_account.html', form=form, **context)
 

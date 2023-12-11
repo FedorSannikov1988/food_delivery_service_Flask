@@ -1,0 +1,64 @@
+{% extends 'basic_template.html' %}
+
+{% block for_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/styles/style_for_personal_account_change_delivery_address.css') }}">
+{% endblock %}
+
+{% block for_js %}
+    <script src="{{ url_for('static', filename='assets/js/required_and_optional_fields_form.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+
+    <section class="personal_account_change_delivery_address">
+
+        <h2 class="personal_account_change_delivery_address__title">
+            Личный кабинет: изминение адреса доставки по умолчанию
+        </h2>
+
+        <form id="form-for-user" class="personal_account_change_delivery_address__form" action="{{ url_for('personal_account_change_delivery_address') }}" method="post">
+
+            {{ form.csrf_token }}
+
+            {% for field in form if field.name != 'csrf_token' %}
+
+                <p>
+                    {{ field.label }}
+                    <br>
+                    {{ field }}
+
+                        {% if field.errors %}
+                            {% for error in field.errors %}
+                                <p class="personal_account_change_delivery_address__form__errors">
+                                    {{ error }}
+                                </p>
+                            {% endfor %}
+                        {% endif %}
+                </p>
+            {% endfor %}
+
+            <div class="personal_account_change_delivery_address__form__wrapper-for-button" >
+                <a class="personal_account_change_delivery_address__button__link"
+                   href="{{ url_for('personal_account') }}">
+                    <div class="personal_account_change_delivery_address__button">
+                        Назад
+                    </div>
+                </a>
+
+                <input class="personal_account_change_delivery_address__button" type="submit" value="Изменить">
+            </div>
+        </form>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <dl class="personal_account_change_delivery_address__flash-messages">
+                    {% for category, message in messages %}
+                        <dd class="personal_account_change_personal_data__flash-messages_{{ category }}">{{ message }}</dd>
+                    {% endfor %}
+                    </dl>
+                {% endif %}
+        {% endwith %}
+
+    </section>
+
+{% endblock %}

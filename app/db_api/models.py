@@ -46,6 +46,9 @@ def load_user(user_id):
 
 
 class Users(db.Model, UserMixin):
+
+    __tablename__ = 'users'
+
     def __init__(self,
                  name: str,
                  surname: str,
@@ -62,8 +65,6 @@ class Users(db.Model, UserMixin):
         self.telephone = telephone
         self.email = email
         self.default_shipping_address = default_shipping_address
-
-    __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
     path_photo = db.Column(db.String, nullable=True)

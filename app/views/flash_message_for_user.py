@@ -6,7 +6,7 @@ from flask import render_template
 def flash_message_for_user():
 
     context = {
-        'title_pag': 'Оповещение пользователя'
+        'title_page': 'Оповещение пользователя'
     }
     return render_template('flash_message_for_user.html', **context)
 

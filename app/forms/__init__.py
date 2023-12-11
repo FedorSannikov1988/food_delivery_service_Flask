@@ -2,3 +2,6 @@ from .log_in_account import UserLogIn
 from .registration_user import UserRegistration
 from .forget_password_entering_email import ForgetPasswordEnteringEmail
 from .forget_password_enter_new_password import ForgetPasswordEnterNewPassword
+from .personal_account_change_personal_data import PersonalAccountChangePersonalData
+from .personal_account_change_delivery_address import PersonalAccountChangeDeliveryAddress
+from .personal_account_change_password import PersonalAccountChangePassword

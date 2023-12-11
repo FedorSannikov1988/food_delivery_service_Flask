@@ -1,7 +1,7 @@
 from .models import db, \
-                    Meal, \
-                    Users, \
-                    CategoriesMeal
+    Meal, \
+    Users, \
+    CategoriesMeal
 from sqlalchemy import asc
 from typing import Optional
 from datetime import datetime
@@ -65,7 +65,6 @@ def searching_user_account_and_setting_new_password(email: str,
 
 
 def add_user_photo(email: str, new_path_photo: str) -> str:
-
     user = Users.query.filter_by(email=email).first()
 
     path_photo_old: str = user.path_photo
@@ -77,8 +76,35 @@ def add_user_photo(email: str, new_path_photo: str) -> str:
 
 
 def delete_user_photo(email: str) -> None:
-
     user = Users.query.filter_by(email=email).first()
     user.path_photo = None
     db.session.commit()
 
+
+def change_personal_data(email: str,
+                         name: str,
+                         surname: str,
+                         patronymic: str,
+                         date_birth: datetime.date) -> None:
+    user = Users.query.filter_by(email=email).first()
+    user.name = name
+    user.surname = surname
+    user.patronymic = patronymic
+    user.date_birth = date_birth
+    db.session.commit()
+
+
+def change_default_shipping_address(email: str,
+                                    new_default_shipping_address: str) -> None:
+    user = Users.query.filter_by(email=email).first()
+
+    user.default_shipping_address = new_default_shipping_address
+    db.session.commit()
+
+
+def change_password(email: str,
+                    new_password: str) -> None:
+    user = Users.query.filter_by(email=email).first()
+
+    user.set_password(password=new_password)
+    db.session.commit()

@@ -1,8 +1,3 @@
-from app.mail import sent_mail
-from app.forms import UserRegistration
-from app.db_api import add_user_in_database
-from app.utilities import WorkingWithToken, \
-                          WorkingWithTimeInsideApp
 from config import app, \
                    LOWER_AGE_YEARS, \
                    UPPER_AGE_YEARS
@@ -11,6 +6,11 @@ from flask import flash, \
                   request, \
                   redirect, \
                   render_template
+from app.mail import sent_mail
+from app.forms import UserRegistration
+from app.db_api import add_user_in_database
+from app.utilities import WorkingWithToken, \
+                          WorkingWithTimeInsideApp
 from sqlalchemy.exc import IntegrityError
 
 
@@ -96,7 +96,7 @@ def user_registration():
             flash(text, 'error')
 
     context = {
-        'title_pag': 'Регистрация пользователя'
+        'title_page': 'Регистрация пользователя'
     }
     return render_template('user_registration.html', form=form, **context)
 
