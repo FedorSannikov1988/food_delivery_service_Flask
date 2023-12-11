@@ -1,6 +1,6 @@
-from config import SECRET_KEY
-from jwt import DecodeError
 import jwt
+from jwt import DecodeError
+from config import SECRET_KEY
 
 
 class WorkingWithToken:

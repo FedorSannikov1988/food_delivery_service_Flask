@@ -1,4 +1,3 @@
-import copy
 from .models import db, \
                     Meal, \
                     Users, \
@@ -75,3 +74,11 @@ def add_user_photo(email: str, new_path_photo: str) -> str:
     db.session.commit()
 
     return path_photo_old
+
+
+def delete_user_photo(email: str) -> None:
+
+    user = Users.query.filter_by(email=email).first()
+    user.path_photo = None
+    db.session.commit()
+

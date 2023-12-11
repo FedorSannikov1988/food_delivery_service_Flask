@@ -63,16 +63,21 @@
     grid-column: span 2;
 }
 
-.content-for-personal-account__set-user-photo__download_file {
-    color: transparent;
-    width: 133px;
+.wrapper-image-form_content-for-personal-account__set-user-photo {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    margin-top: 50px;
 }
 
+.content-for-personal-account__set-user-photo__download_file {
+    color: transparent;
+    width: 134px;
+}
 
 .content-for-personal-account__set-user-photo {
     display: flex;
     gap: 30px;
-    margin-top: 50px;
 }
 
 .content-for-personal-account__set-user-photo__download_file::-webkit-file-upload-button {
@@ -140,4 +145,31 @@
     color: white;
     background: #91b90a;
     border-color: #91b90a;
+}
+
+.content-for-personal-account__delete-photo {
+    color: #000;
+
+    font-family: "Cousine-Regular";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+
+      display: inline-block;
+      background: #F8F8F8FF;
+      border: 1px solid #000000;
+      border-radius: 3px;
+      padding: 5px 8px;
+      outline: none;
+      white-space: nowrap;
+      -webkit-user-select: none;
+      cursor: pointer;
+
+    transition: 500ms;
+}
+
+.content-for-personal-account__delete-photo:hover {
+    color: #e71313;
+    background: #91b90a;
+    border-color: #e71313;
 }

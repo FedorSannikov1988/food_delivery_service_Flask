@@ -20,11 +20,23 @@
                          alt="Фотография {{ current_user.name }}">
                 </p>
 
+                <div class="wrapper-image-form_content-for-personal-account__set-user-photo">
 
-                <form class="content-for-personal-account__set-user-photo" method="post" enctype="multipart/form-data" action="{{ url_for('personal_account') }}">
-                    <input class="content-for-personal-account__set-user-photo__download_file" name="file" type="file" id="upload-photo">
-                    <input class="content-for-personal-account__set-user-photo__download_button" type="submit" value="Загрузить">
-                </form>
+                    <form class="content-for-personal-account__set-user-photo" method="post" enctype="multipart/form-data" action="{{ url_for('personal_account') }}">
+                        <input class="content-for-personal-account__set-user-photo__download_file" name="file" type="file" id="upload-photo">
+                        <input class="content-for-personal-account__set-user-photo__download_button" type="submit" value="Загрузить">
+                    </form>
+
+                    {% if current_user.path_photo %}
+
+                    <form method="post" action="{{ url_for('personal_account') }}">
+                        <input type="hidden" name="user_photo_to_delete" value="{{ current_user.path_photo }}">
+                        <input class="content-for-personal-account__delete-photo" type="submit" value="Удалить фотографию">
+                    </form>
+
+                    {% endif %}
+
+                </div>
 
             <div class="content-for-personal-account__user-information">
                 <div class="content-for-personal-account__personal-information">
