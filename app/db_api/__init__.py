@@ -3,7 +3,8 @@ from .models import Meal, \
 from .loading_fixtures import path_for_meal, \
                               loading_fixtures, \
                               path_for_categories_meal
-from .requests import add_user_photo, \
+from .requests import get_meal, \
+                      add_user_photo, \
                       change_password, \
                       delete_user_photo, \
                       add_user_in_database, \

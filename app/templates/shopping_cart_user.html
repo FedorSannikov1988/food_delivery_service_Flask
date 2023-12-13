@@ -1,0 +1,50 @@
+{% extends 'basic_template.html' %}
+
+{% block for_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/styles/style_for_shopping_cart_user.css') }}">
+{% endblock %}
+
+{% block content %}
+    <section class="content-for-shopping_cart">
+
+        {% for purchases in purchases %}
+
+            <div class="shopping_cart_use__table-purchases-contents">
+
+                <div class="shopping_cart_use__table-purchases-contents__image">
+                    {{ purchases.file_path_image }}
+                </div>
+
+                <div class="shopping_cart_use__table-purchases-contents__title">
+                    {{ purchases.title }}
+                </div>
+
+                <div class="shopping_cart_use__table-purchases-contents__description">
+                    {{ purchases.description }}
+                </div>
+
+                <div class="shopping_cart_use__table-purchases-contents__weight">
+                    {{ purchases.weight }}
+                </div>
+
+                <div class="shopping_cart_use__table-purchases-contents__cost">
+                    {{ purchases.cost }}
+                </div>
+
+                <div class="shopping_cart_use__table-purchases-contents__quantity">
+                    {{ purchases.quantity }}
+                </div>
+
+                <div class="shopping_cart_use__table-purchases-contents__total_cost">
+                    {{ purchases.total_cost }}
+                </div>
+
+            </div>
+
+        {% endfor %}
+
+    <br>
+    {{ full_price }}
+
+    </section>
+{% endblock %}

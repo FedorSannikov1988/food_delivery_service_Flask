@@ -1,7 +1,9 @@
+from app.db_api import get_meal, Meal
 from config import app
 from flask import url_for, \
                   session, \
-                  redirect
+                  redirect, \
+                  render_template
 from flask_login import current_user
 
 
@@ -9,8 +11,43 @@ from flask_login import current_user
 def shopping_cart_user():
 
     if current_user.is_authenticated:
-        print('зашол в корзину покупок')
-        return redirect(url_for('index'))
+
+        user_cart = session.get('user_cart')
+
+        purchases: list = []
+
+        full_price: float = 0
+
+        if user_cart:
+
+            for id_food, quantity in user_cart.items():
+
+                meal: Meal = \
+                    get_meal(id_meal=int(id_food))
+
+                full_price += meal.cost * quantity
+
+                meal: dict = \
+                    {
+                        'id': meal.id,
+                        'file_path_image': meal.file_path_image,
+                        'title': meal.title,
+                        'description': meal.description,
+                        'weight': meal.weight,
+                        'cost': meal.cost,
+                        'total_cost': meal.cost * quantity
+                    }
+
+                meal.update({'quantity': quantity})
+
+                purchases.append(meal)
+
+        context = {
+            'title_page': 'Корзина покупателя',
+            'purchases': purchases,
+            'full_price': full_price
+        }
+        return render_template('shopping_cart_user.html', **context)
     else:
         return redirect(url_for('log_in_account'))
 
@@ -25,7 +62,8 @@ def inject_number_products_in_user_cart():
         number_products_in_user_cart = \
             sum(user_cart.values()) if user_cart else 0
 
-    return dict(number_products_in_user_cart=number_products_in_user_cart)
+    return dict(number_products_in_user_cart=
+                number_products_in_user_cart)
 
 
 @app.route('/clear_session/')
