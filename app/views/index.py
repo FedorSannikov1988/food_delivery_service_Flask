@@ -7,7 +7,7 @@ from app.db_api import get_all_categories_meal
 def index():
 
     context = {
-        'title_page': 'Главная страница',
+        'title_page': 'Главная страница - Меню службы доставки',
         'all_categories_meal': get_all_categories_meal()
     }
     return render_template('index.html', **context)

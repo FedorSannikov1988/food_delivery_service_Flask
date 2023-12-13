@@ -8,5 +8,6 @@ from .index import app
 from .log_in_account import app
 from .log_out_personal_account import app
 from .personal_account import app
+from .shopping_cart import app
 from .terms_of_delivery import app
 from .user_registration import app

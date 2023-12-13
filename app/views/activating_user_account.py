@@ -33,6 +33,7 @@ def activating_user_account(token: str = ''):
         ) and destiny == 'user_registration':
 
             searching_and_activating_user_account(email=id_user)
+
             text: str = \
                 f'Ваша учетная запись активирована !'
             flash(text, 'success')

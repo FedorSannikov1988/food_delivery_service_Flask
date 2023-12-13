@@ -9,7 +9,6 @@
     position: fixed;
     background: #FFFFFF;
     margin-top: 90px;
-    margin-bottom: 50px;
 }
 
 .menu-for-index__list {
@@ -182,3 +181,98 @@
     font-weight: 700;
     line-height: normal;
 }
+
+.wrapper-for-button_for_cart {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.button_for_cart__link {
+    color: initial;
+    text-decoration: initial;
+}
+
+.button_for_cart__button {
+    color: #000;
+
+    font-family: "Cousine-Regular";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+
+    display: inline-block;
+    background: #F8F8F8FF;
+    border: 1px solid #000000;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+
+    transition: 500ms;
+}
+
+.button_for_cart__button:hover {
+    color: #ffffff;
+    background: #91b90a;
+    border-color: #91b90a;
+}
+
+.button_for_cart__button_quantity {
+    color: #000;
+    background: #ffffff;
+
+    font-family: "Cousine-Regular";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+
+    border: none;
+    padding: 5px 8px;
+}
+
+.wrapper-for-menu-for-index__shopping-cart-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 25px;
+}
+
+.menu-for-index__shopping-cart-icon {
+    width:90px;
+}
+
+.wrapper-for-shopping-cart-text {
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background: url("../pic/circle.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    position: absolute;
+    top: -10px;
+    left: 93px;
+    z-index: 2;
+}
+
+.menu-for-index__shopping-cart-text {
+    color: #ffffff;
+    font-family: "Cousine-Regular";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+}
+

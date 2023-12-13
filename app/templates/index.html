@@ -44,6 +44,27 @@
                         </dd>
                     {% endfor %}
                 </dl>
+
+
+                {% if number_products_in_user_cart and current_user.is_authenticated %}
+
+                    <div class="wrapper-for-menu-for-index__shopping-cart-icon">
+
+                        <div class="wrapper-for-shopping-cart-text">
+                            <p class="menu-for-index__shopping-cart-text">
+                                {{ number_products_in_user_cart }}
+                            </p>
+                        </div>
+
+                        <a href="{{ url_for('shopping_cart_user') }}">
+                             <img class="menu-for-index__shopping-cart-icon"
+                             src="{{ url_for('static', filename='assets/pic/shopping_cart_icon.png') }}"
+                             alt="иконка корзины покупок">
+                        </a>
+                    </div>
+
+                {% endif %}
+
             </div>
 
             <div class="content-for-index">
@@ -61,7 +82,7 @@
 
                         {% for one_meal in one_category_meal.information_about_meals %}
 
-                            <div class="content-for-index__product_card">
+                            <div id="meal_{{ one_meal.id }}" class="content-for-index__product_card">
 
                                 <img class="content-for-index__product_card__img"
                                 {% if one_meal.file_path_image %}
@@ -70,10 +91,6 @@
                                      src="{{ url_for('static', filename='assets/pic/no_picture_food.png') }}"
                                 {% endif %}
                                      alt="{{ one_meal.title }}">
-
-                                <!--
-                                <p> {{ one_meal.id }} </p>
-                                -->
 
                                 <p class="content-for-index__product_card__title">
                                     {{ one_meal.title }}
@@ -137,6 +154,57 @@
                                     {% endif %}
                                 </div>
 
+                                {% if current_user.is_authenticated %}
+
+                                    {% if (not session.get('user_cart')) or (not session.get('user_cart').get(one_meal.id|string)) %}
+
+                                        <div class="wrapper-for-button_for_cart">
+                                            <a class="button_for_cart__link"
+                                                    href="{{ url_for('add_one_thing_shopping_cart', id_meal=one_meal.id) }}">
+                                                <button class="button_for_cart__button">
+                                                    Купить
+                                                </button>
+                                            </a>
+                                        </div>
+
+                                    {% elif session.get('user_cart').get(one_meal.id|string) %}
+
+                                        <div class="wrapper-for-button_for_cart">
+
+                                            <a class="button_for_cart__link"
+                                                    href="{{ url_for('subtract_one_thing_shopping_cart', id_meal=one_meal.id) }}">
+                                                <button class="button_for_cart__button">
+                                                    -
+                                                </button>
+                                            </a>
+
+                                            <button class="button_for_cart__button_quantity">
+                                                {{ session.get('user_cart').get(one_meal.id|string) }}
+                                            </button>
+
+                                            <a class="button_for_cart__link"
+                                                    href="{{ url_for('add_one_thing_shopping_cart', id_meal=one_meal.id) }}">
+                                                <button class="button_for_cart__button">
+                                                    +
+                                                </button>
+                                            </a>
+
+                                        </div>
+
+                                    {% endif %}
+
+                                {% elif not current_user.is_authenticated %}
+
+                                    <div class="wrapper-for-button_for_cart">
+                                        <a class="button_for_cart__link"
+                                           href="{{ url_for('add_one_thing_shopping_cart', id_meal=one_meal.id) }}">
+                                                <button class="button_for_cart__button">
+                                                    Купить
+                                                </button>
+                                        </a>
+                                    </div>
+
+                                {% endif %}
                             </div>
                         {% endfor %}
                     </div>
