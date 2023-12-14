@@ -172,7 +172,6 @@ th, td {
     transition: 500ms;
 }
 
-
 .button_for_cart__button_del:hover {
     color: red;
     background: #91b90a;
@@ -190,4 +189,20 @@ th, td {
 
     border: none;
     padding: 5px 8px;
+}
+
+.wrapper__basket-empty {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.basket-empty__text {
+    color: #000;
+    font-family: "Cousine-Bold";
+    font-size: 25px;
+    font-weight: 700;
+    line-height: normal;
 }
