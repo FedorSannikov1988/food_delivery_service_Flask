@@ -23,6 +23,7 @@ def page_not_found(error):
     }
     return render_template('mistake_404.html', **context)
 
+
 @app.errorhandler(500)
 def page_not_found(error):
 

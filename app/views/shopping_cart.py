@@ -1,5 +1,6 @@
-from app.db_api import get_meal, Meal
 from config import app
+from app.db_api import Meal, \
+                       get_meal
 from flask import url_for, \
                   session, \
                   redirect, \
@@ -68,8 +69,6 @@ def inject_number_products_in_user_cart():
 
 @app.route('/add_one_thing_shopping_cart/<where_return>/<int:id_meal>/')
 def add_one_thing_shopping_cart(where_return: str, id_meal: int):
-
-    print(where_return)
 
     if current_user.is_authenticated:
 

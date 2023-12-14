@@ -92,18 +92,27 @@
             </div>
 
             <div class="content-for-personal-account__delivery-password">
-                <p class="content-for-personal-account__user-information__section__header">
-                    Пароль
-                </p>
                 <div class="wrapper_for_edit_button">
                     <a class="content-for-personal-account__edit_button__link"
                        href="{{ url_for('personal_account_change_password') }}">
                         <button class="content-for-personal-account__edit_button">
-                            Изменить
+                            Изменить Пароль
                         </button>
                     </a>
                 </div>
             </div>
+
+            <div class="content-for-personal-account__delivery-password">
+                <div class="wrapper_for_edit_button">
+                    <a class="content-for-personal-account__edit_button__link"
+                       href="{{ url_for('personal_account_change_password') }}">
+                        <button class="content-for-personal-account__edit_button">
+                            Посмотреть историю Заказов
+                        </button>
+                    </a>
+                </div>
+            </div>
+
 
         </div>
     </section>

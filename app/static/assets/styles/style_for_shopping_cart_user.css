@@ -178,6 +178,35 @@ th, td {
     border-color: red;
 }
 
+.button_for_place_order {
+    color: #000;
+
+    font-family: "Cousine-Regular";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+
+    display: inline-block;
+    background: #F8F8F8FF;
+    border: 1px solid #000000;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+
+    transition: 500ms;
+
+    margin-top: 50px;
+}
+
+.button_for_place_order:hover {
+    color: #ffffff;
+    background: #91b90a;
+    border-color: #91b90a;
+}
+
 .button_for_cart__button_quantity {
     color: #000;
     background: #ffffff;
@@ -205,4 +234,8 @@ th, td {
     font-size: 25px;
     font-weight: 700;
     line-height: normal;
+}
+
+.button_for_place_order {
+
 }

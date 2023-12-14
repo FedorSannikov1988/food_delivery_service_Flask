@@ -1,6 +1,7 @@
 from .models import db, \
                     Meal, \
                     Users, \
+                    Orders, \
                     CategoriesMeal
 from sqlalchemy import asc
 from typing import Optional
@@ -114,3 +115,15 @@ def change_password(email: str,
 
 def get_meal(id_meal: int) -> Optional[Meal]:
     return Meal.query.get(id_meal)
+
+
+def create_new_order(user_id: int,
+                     composition_order: str,
+                     date_and_time_delivery: datetime) -> None:
+
+    new_order = Orders(user_id=user_id,
+                       composition_order=composition_order,
+                       date_and_time_delivery=date_and_time_delivery)
+
+    db.session.add(new_order)
+    db.session.commit()

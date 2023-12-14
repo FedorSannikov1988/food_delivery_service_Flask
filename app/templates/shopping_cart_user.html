@@ -152,8 +152,15 @@
                         {% endif %}
                     </strong>
                 </td>
-
             </table>
+
+            <a class="button_for_cart__link"
+               href="{{ url_for('process_order') }}">
+                <button class="button_for_place_order">
+                    Оформить заказ
+                </button>
+            </a>
+
 
 
         {% elif not purchases %}

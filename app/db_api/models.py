@@ -77,6 +77,7 @@ class Users(db.Model, UserMixin):
     status = db.Column(db.Boolean, default=False)
     default_shipping_address = db.Column(db.String(1000), nullable=False)
     password_hash = db.Column(db.String(128), nullable=False)
+    user_orders = db.relationship('Orders', backref='users')
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -86,3 +87,28 @@ class Users(db.Model, UserMixin):
 
     def __repr__(self):
         return f'Users({self.name}, {self.surname}, {self.email})'
+
+
+class Orders(db.Model):
+
+    __tablename__ = 'orders'
+
+    def __init__(self,
+                 user_id: int,
+                 composition_order: str,
+                 date_and_time_delivery: datetime):
+
+        self.user_id = user_id
+        self.composition_order = composition_order
+        self.date_and_time_delivery = date_and_time_delivery
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    composition_order = db.Column(db.String, nullable=False)
+    date_and_time_order_creation = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    date_and_time_delivery = db.Column(db.DateTime, nullable=False)
+    payment_status = db.Column(db.Boolean, nullable=False, default=False)
+    delivery_status = db.Column(db.Boolean, nullable=False, default=False)
+
+    def __repr__(self):
+        return f'Orders({self.id}, {self.date_and_time_order_creation})'

@@ -6,6 +6,7 @@ from .loading_fixtures import path_for_meal, \
 from .requests import get_meal, \
                       add_user_photo, \
                       change_password, \
+                      create_new_order, \
                       delete_user_photo, \
                       add_user_in_database, \
                       change_personal_data, \
