@@ -76,8 +76,45 @@
     color: #91b90a;
 }
 
-.all-link-for-menu :first-child:hover  {
+.all-link-for-menu :first-child:hover {
     color: #000000;
+}
+
+.all-link-for-menu :last-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.wrapper-shopping-cart-icon_header {
+    position: relative;
+}
+
+.menu-for-index__shopping-cart-icon_header {
+    width: 65px;
+}
+
+.shopping-cart-icon_header__text {
+    color: white;
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background: url("../pic/circle.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    position: absolute;
+    top: -17px;
+    left: 42px;
+    z-index: 2;
 }
 
 .link-for-menu {

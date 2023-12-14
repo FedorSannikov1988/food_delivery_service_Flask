@@ -5,48 +5,189 @@
     align-items: center;
 }
 
-.shopping_cart_use__table-purchases-contents {
+.content-for-shopping_cart__title {
+    color: #91b90a;
+    font-family: "Cousine-Bold";
+    font-size: 50px;
+    font-weight: 700;
+    line-height: normal;
+
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.content-for-shopping_cart__table {
+    border-collapse: collapse;
+
+    color: #000;
+    font-family: "Cousine-Regular";
+    font-size: 12px;
+    font-weight: 400;
+    line-height: normal;
+}
+
+th, td {
+    border: 2px solid black;
+}
+
+.content-for-shopping_cart__table__text_title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+:root {
+    --table_height_cell: 150px;
+    --table_conclusion_cell: 40px;
+}
+
+.content-for-shopping_cart__table__img {
+    width: 100px;
+}
+
+.content-for-shopping_cart__table__cell_img {
+    width: 120px;
+    height: var(--table_height_cell);
+
+    text-align: center;
+    vertical-align: middle;
+}
+
+.content-for-shopping_cart__table__cell_title {
+    width: 150px;
+    height: var(--table_height_cell);
+
+    text-align: center;
+    vertical-align: middle;
+}
+
+.content-for-shopping_cart__table__cell_description {
+    width: 200px;
+    height: var(--table_height_cell);
+
+    text-align: center;
+    vertical-align: middle;
+}
+
+.content-for-shopping_cart__table__cell_weight {
+    width: 150px;
+    height: var(--table_height_cell);
+
+    text-align: center;
+    vertical-align: middle;
+}
+
+.content-for-shopping_cart__table__cell_cost {
+    width: 100px;
+    height: var(--table_height_cell);
+
+    text-align: center;
+    vertical-align: middle;
+}
+
+.content-for-shopping_cart__table__cell_quantity {
+    width: 120px;
+    height: var(--table_height_cell);
+
+    text-align: center;
+    vertical-align: middle;
+}
+
+.content-for-shopping_cart__table__cell_total_cost {
+    width: 200px;
+    height: var(--table_height_cell);
+
+    text-align: center;
+    vertical-align: middle;
+}
+
+.content-for-shopping_cart__table__cell_conclusion {
+    color: red;
+
+    height: var(--table_conclusion_cell);
+
+    text-align: center;
+    vertical-align: middle;
+}
+
+.wrapper-for-button_for_cart {
     display: flex;
+    gap: 5px;
+    justify-content: center;
 }
 
-.shopping_cart_use__table-purchases-contents__image {
-    border: 2px solid black;
-    width: 200px;
-    height: 100px;
+.button_for_cart__link {
+    color: initial;
+    text-decoration: initial;
 }
 
-.shopping_cart_use__table-purchases-contents__title {
-    border: 2px solid black;
-    width: 200px;
-    height: 100px;
+.button_for_cart__button {
+    color: #000;
+
+    font-family: "Cousine-Regular";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+
+    display: inline-block;
+    background: #F8F8F8FF;
+    border: 1px solid #000000;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+
+    transition: 500ms;
 }
 
-.shopping_cart_use__table-purchases-contents__description {
-    border: 2px solid black;
-    width: 200px;
-    height: 100px;
+.button_for_cart__button:hover {
+    color: #ffffff;
+    background: #91b90a;
+    border-color: #91b90a;
 }
 
-.shopping_cart_use__table-purchases-contents__weight {
-    border: 2px solid black;
-    width: 200px;
-    height: 100px;
+
+.button_for_cart__button_del {
+    color: #000;
+
+    font-family: "Cousine-Regular";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+
+    display: inline-block;
+    background: #F8F8F8FF;
+    border: 1px solid #000000;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+
+    width: 90px;
+    margin-top: 20px;
+
+    transition: 500ms;
 }
 
-.shopping_cart_use__table-purchases-contents__cost {
-    border: 2px solid black;
-    width: 200px;
-    height: 100px;
+
+.button_for_cart__button_del:hover {
+    color: red;
+    background: #91b90a;
+    border-color: red;
 }
 
-.shopping_cart_use__table-purchases-contents__quantity {
-    border: 2px solid black;
-    width: 200px;
-    height: 100px;
-}
+.button_for_cart__button_quantity {
+    color: #000;
+    background: #ffffff;
 
-.shopping_cart_use__table-purchases-contents__total_cost {
-    border: 2px solid black;
-    width: 200px;
-    height: 100px;
+    font-family: "Cousine-Regular";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+
+    border: none;
+    padding: 5px 8px;
 }

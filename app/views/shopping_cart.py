@@ -66,14 +66,10 @@ def inject_number_products_in_user_cart():
                 number_products_in_user_cart)
 
 
-@app.route('/clear_session/')
-def clear_session():
-    session.clear()
-    return redirect(url_for('index'))
+@app.route('/add_one_thing_shopping_cart/<where_return>/<int:id_meal>/')
+def add_one_thing_shopping_cart(where_return: str, id_meal: int):
 
-
-@app.route('/add_one_thing_shopping_cart/<int:id_meal>/')
-def add_one_thing_shopping_cart(id_meal):
+    print(where_return)
 
     if current_user.is_authenticated:
 
@@ -95,14 +91,14 @@ def add_one_thing_shopping_cart(id_meal):
 
         anchor_formation: str = "meal_" + str(id_meal)
 
-        return redirect(url_for('index', _anchor=anchor_formation))
+        return redirect(url_for(where_return, _anchor=anchor_formation))
 
     else:
         return redirect(url_for('log_in_account'))
 
 
-@app.route('/subtract_one_thing_shopping_cart/<int:id_meal>/')
-def subtract_one_thing_shopping_cart(id_meal):
+@app.route('/subtract_one_thing_shopping_cart/<where_return>/<int:id_meal>/')
+def subtract_one_thing_shopping_cart(where_return: str, id_meal: int):
 
     if current_user.is_authenticated:
 
@@ -121,7 +117,30 @@ def subtract_one_thing_shopping_cart(id_meal):
 
         anchor_formation: str = "meal_" + str(id_meal)
 
-        return redirect(url_for('index', _anchor=anchor_formation))
+        return redirect(url_for(where_return, _anchor=anchor_formation))
+
+    else:
+        return redirect(url_for('log_in_account'))
+
+
+@app.route('/delete_all_thing_shopping_cart/<where_return>/<int:id_meal>/')
+def delete_all_thing_shopping_cart(where_return: str, id_meal: int):
+
+    if current_user.is_authenticated:
+
+        str_id_meal: str = str(id_meal)
+
+        if session.get('user_cart'):
+
+            user_cart = session.get('user_cart')
+
+            user_cart.pop(str_id_meal)
+
+            session['user_cart'] = user_cart
+
+        anchor_formation: str = "meal_" + str(id_meal)
+
+        return redirect(url_for(where_return, _anchor=anchor_formation))
 
     else:
         return redirect(url_for('log_in_account'))

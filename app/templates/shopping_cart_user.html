@@ -7,44 +7,154 @@
 {% block content %}
     <section class="content-for-shopping_cart">
 
-        {% for purchases in purchases %}
+        <h2 class="content-for-shopping_cart__title">
+            Корзина покупок
+        </h2>
 
-            <div class="shopping_cart_use__table-purchases-contents">
+    {% if purchases %}
 
-                <div class="shopping_cart_use__table-purchases-contents__image">
-                    {{ purchases.file_path_image }}
-                </div>
+        <table class="content-for-shopping_cart__table">
 
-                <div class="shopping_cart_use__table-purchases-contents__title">
-                    {{ purchases.title }}
-                </div>
+            <tr>
+                <th>
+                    <p class="content-for-shopping_cart__table__text_title">
+                       Внешний вид
+                    </p>
+                </th>
+                <th>
+                    <p class="content-for-shopping_cart__table__text_title">
+                       Название
+                    </p>
+                </th>
+                <th>
+                    <p class="content-for-shopping_cart__table__text_title">
+                       Описание
+                    </p>
+                </th>
+                <th>
+                    <p class="content-for-shopping_cart__table__text_title">
+                       Вес
+                    </p>
+                </th>
+                <th>
+                    <p class="content-for-shopping_cart__table__text_title">
+                       Цена, ₽
+                    </p>
+                </th>
+                <th>
+                    <p class="content-for-shopping_cart__table__text_title">
+                       Количество порций
+                    </p>
+                </th>
+                <th>
+                    <p class="content-for-shopping_cart__table__text_title">
+                       Цена за все порции, ₽
+                    </p>
+                </th>
+            </tr>
 
-                <div class="shopping_cart_use__table-purchases-contents__description">
-                    {{ purchases.description }}
-                </div>
+            {% for purchases in purchases %}
 
-                <div class="shopping_cart_use__table-purchases-contents__weight">
-                    {{ purchases.weight }}
-                </div>
+                <tr id='meal_{{ purchases.id }}'>
+                    <td class="content-for-shopping_cart__table__cell_img">
+                        <img class="content-for-shopping_cart__table__img"
+                                {% if purchases.file_path_image %}
+                                         src="{{ url_for('media', filename=purchases.file_path_image) }}"
+                                {% elif not purchases.file_path_image %}
+                                         src="{{ url_for('static', filename='assets/pic/no_picture_food.png') }}"
+                                {% endif %}
+                                         alt="{{ purchases.title }}">
+                    </td>
+                    <td class="content-for-shopping_cart__table__cell_title">
+                        <strong>
+                            <p>
+                                {{ purchases.title }}
+                            </p>
+                        </strong>
+                    </td>
+                    <td class="content-for-shopping_cart__table__cell_description">
+                        <p>
+                            {{ purchases.description }}
+                        </p>
+                    </td>
+                    <td class="content-for-shopping_cart__table__cell_weight">
+                        <p>
+                            {{ purchases.weight }}
+                        </p>
+                    </td>
+                    <td class="content-for-shopping_cart__table__cell_cost">
+                        {% if purchases.cost|int == purchases.cost %}
+                            <p>{{ purchases.cost|int }} ₽</p>
+                        {% else %}
+                            <p>{{ purchases.cost }} ₽</p>
+                        {% endif %}
+                    </td>
+                    <td class="content-for-shopping_cart__table__cell_quantity">
 
-                <div class="shopping_cart_use__table-purchases-contents__cost">
-                    {{ purchases.cost }}
-                </div>
+                        <div class="wrapper-for-button_for_cart">
 
-                <div class="shopping_cart_use__table-purchases-contents__quantity">
-                    {{ purchases.quantity }}
-                </div>
+                            <a class="button_for_cart__link"
+                               href="{{ url_for('subtract_one_thing_shopping_cart', where_return='shopping_cart_user', id_meal=purchases.id) }}">
+                                <button class="button_for_cart__button">
+                                    -
+                                </button>
+                            </a>
 
-                <div class="shopping_cart_use__table-purchases-contents__total_cost">
-                    {{ purchases.total_cost }}
-                </div>
+                            <button class="button_for_cart__button_quantity">
+                                {{ purchases.quantity }}
+                            </button>
 
-            </div>
+                            <a class="button_for_cart__link"
+                               href="{{ url_for('add_one_thing_shopping_cart', where_return='shopping_cart_user', id_meal=purchases.id) }}">
+                                <button class="button_for_cart__button">
+                                    +
+                                </button>
+                            </a>
+                        </div>
 
-        {% endfor %}
+                        <a class="button_for_cart__link"
+                           href="{{ url_for('delete_all_thing_shopping_cart', where_return='shopping_cart_user', id_meal=purchases.id) }}">
+                            <button class="button_for_cart__button_del">
+                                Удалить
+                            </button>
+                        </a>
 
-    <br>
-    {{ full_price }}
+                    </td>
+                    <td class="content-for-shopping_cart__table__cell_total_cost">
+                        <strong>
+                            {% if purchases.total_cost|int == purchases.total_cost %}
+                                <p>{{ purchases.total_cost|int }} ₽</p>
+                            {% else %}
+                                <p>{{ purchases.cost }} ₽</p>
+                            {% endif %}
+                        </strong>
+                    </td>
+                </tr>
+
+            {% endfor %}
+
+            <td class="content-for-shopping_cart__table__cell_conclusion"
+                colspan="6">
+                    <p>
+                        <strong>
+                            Итого:
+                        </strong>
+                    </p>
+            </td>
+            <td class="content-for-shopping_cart__table__cell_conclusion">
+                <strong>
+
+                    {% if full_price|int == full_price %}
+                        <p>{{ full_price|int }} ₽</p>
+                    {% else %}
+                        <p>{{ full_price }} ₽</p>
+                    {% endif %}
+                </strong>
+            </td>
+
+        </table>
+
+    {% endif %}
 
     </section>
 {% endblock %}

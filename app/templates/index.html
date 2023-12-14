@@ -61,6 +61,11 @@
                              src="{{ url_for('static', filename='assets/pic/shopping_cart_icon.png') }}"
                              alt="иконка корзины покупок">
                         </a>
+
+                        <p class="menu-for-index__shopping-cart-icon__signature">
+                            Корзина покупок
+                        </p>
+
                     </div>
 
                 {% endif %}
@@ -101,8 +106,6 @@
                                     {{ one_meal.description }}
                                 </p>
                                 {% endif %}
-
-
 
                                 <div class="content-for-index__product_card__text_parameters">
                                     <p class="content-for-index__product_card__title_parameters">
@@ -160,7 +163,7 @@
 
                                         <div class="wrapper-for-button_for_cart">
                                             <a class="button_for_cart__link"
-                                                    href="{{ url_for('add_one_thing_shopping_cart', id_meal=one_meal.id) }}">
+                                                    href="{{ url_for('add_one_thing_shopping_cart', where_return='index', id_meal=one_meal.id) }}">
                                                 <button class="button_for_cart__button">
                                                     Купить
                                                 </button>
@@ -172,7 +175,7 @@
                                         <div class="wrapper-for-button_for_cart">
 
                                             <a class="button_for_cart__link"
-                                                    href="{{ url_for('subtract_one_thing_shopping_cart', id_meal=one_meal.id) }}">
+                                                    href="{{ url_for('subtract_one_thing_shopping_cart', where_return='index', id_meal=one_meal.id) }}">
                                                 <button class="button_for_cart__button">
                                                     -
                                                 </button>
@@ -183,7 +186,7 @@
                                             </button>
 
                                             <a class="button_for_cart__link"
-                                                    href="{{ url_for('add_one_thing_shopping_cart', id_meal=one_meal.id) }}">
+                                                    href="{{ url_for('add_one_thing_shopping_cart', where_return='index', id_meal=one_meal.id) }}">
                                                 <button class="button_for_cart__button">
                                                     +
                                                 </button>
@@ -197,7 +200,7 @@
 
                                     <div class="wrapper-for-button_for_cart">
                                         <a class="button_for_cart__link"
-                                           href="{{ url_for('add_one_thing_shopping_cart', id_meal=one_meal.id) }}">
+                                           href="{{ url_for('add_one_thing_shopping_cart', where_return='index', id_meal=one_meal.id) }}">
                                                 <button class="button_for_cart__button">
                                                     Купить
                                                 </button>

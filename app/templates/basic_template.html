@@ -50,6 +50,26 @@
                     Выйти из ЛК
                 </a>
             {% endif %}
+
+            <a class="link-for-menu" href="{{ url_for('shopping_cart_user') }}">
+
+                <div class="wrapper-shopping-cart-icon_header">
+
+                    <img class="menu-for-index__shopping-cart-icon_header"
+                         src="{{ url_for('static', filename='assets/pic/shopping_cart_icon_header.png') }}"
+                         alt="иконка корзины покупок для заголовка">
+
+                    {% if number_products_in_user_cart and current_user.is_authenticated %}
+
+                        <p class="shopping-cart-icon_header__text">
+                            {{ number_products_in_user_cart }}
+                        </p>
+
+                    {% endif %}
+
+                </div>
+                <p>Корзина покупок</p>
+            </a>
         </div>
 
     </div>

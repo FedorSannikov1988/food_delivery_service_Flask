@@ -248,6 +248,14 @@
     width:90px;
 }
 
+.menu-for-index__shopping-cart-icon__signature {
+    color: #000;
+    font-family: "Cousine-Regular";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+}
+
 .wrapper-for-shopping-cart-text {
     width: 30px;
     height: 30px;
