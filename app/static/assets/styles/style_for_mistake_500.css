@@ -1,0 +1,37 @@
+@font-face {
+    font-family: "Cousine-Bold";
+    src: url("../fonts/Cousine-Bold.ttf");
+    font-style: normal;
+    line-height: normal;
+}
+
+@font-face {
+    font-family: "Cousine-Regular";
+    src: url("../fonts/Cousine-Regular.ttf");
+    font-style: normal;
+    line-height: normal;
+}
+
+.wrapper_content-for-mistake-500 {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.wrapper_content-for-mistake-500__title {
+    color: #e71313;
+    font-family: "Cousine-Bold";
+    font-size: 60px;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.wrapper_content-for-mistake-500__description {
+    color: #e71313;
+    font-family: "Cousine-Regular";
+    font-size: 25px;
+    font-weight: 400;
+    line-height: normal;
+}
