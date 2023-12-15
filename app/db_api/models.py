@@ -1,3 +1,6 @@
+"""
+Database models for the application
+"""
 from config import db, \
                    login_manager
 from datetime import datetime
@@ -7,6 +10,15 @@ from werkzeug.security import check_password_hash, \
 
 
 class CategoriesMeal(db.Model):
+    """
+    Model for the food category.
+
+    Attributes:
+    - category_meal_name:  unique category that food belongs to
+    - display_order_category: the order in which categories are displayed on the main page
+    (it is necessary in order to put the "hot positions" in the first place, if necessary)
+    - information_about_meals: link to the food table
+    """
 
     __tablename__ = 'сategories_meal'
 
@@ -19,6 +31,22 @@ class CategoriesMeal(db.Model):
 
 
 class Meal(db.Model):
+    """
+    A model for representing dishes in a database.
+
+    Attributes:
+    - id: the unique identifier of the dish
+    - file_path_image: path to the image of the dish
+    - title: name of the dish (unique)
+    - category_meal_name: name of the category to which the dish belongs
+    - description: description of the dish
+    - proteins: the protein content of the dish
+    - fats: the fat content of the dish
+    - carbohydrates: the carbohydrate content of the dish
+    - calories: the number of calories in a dish
+    - weight: the weight of the dish
+    - cost: the cost of the dish
+    """
 
     __tablename__ = 'meal'
 
@@ -42,10 +70,37 @@ class Meal(db.Model):
 
 @login_manager.user_loader
 def load_user(user_id):
+    """
+    A function to load a user from the database.
+
+    Parameters:
+    - user_id: the unique identifier of the user
+
+    Returns:
+    - The user object with the specified user_id.
+    """
     return Users.query.get(user_id)
 
 
 class Users(db.Model, UserMixin):
+    """
+    A model for representing users in a database.
+
+    Attributes:
+    - id: the unique identifier of the user
+    - path_photo: path to the user's photo
+    - name: the user's name
+    - surname: the user's surname
+    - patronymic: the user's patronymic (optional)
+    - date_birth: the user's date of birth
+    - telephone: the user's telephone number
+    - email: the user's email address (unique)
+    - status: the user's status (account activated
+    (email address confirmed or not))
+    - default_shipping_address: the user's default shipping address
+    - password_hash: the hashed password of the user
+    - user_orders: the orders associated with the user
+    """
 
     __tablename__ = 'users'
 
@@ -79,10 +134,21 @@ class Users(db.Model, UserMixin):
     password_hash = db.Column(db.String(128), nullable=False)
     user_orders = db.relationship('Orders', backref='users')
 
-    def set_password(self, password):
+    def set_password(self, password: str) -> None:
+        """
+        Set the password for the user.
+
+        :param password: the password to be set
+        """
         self.password_hash = generate_password_hash(password)
 
-    def check_password(self, password):
+    def check_password(self, password: str):
+        """
+        Check if the provided password matches the user's password.
+
+        :param password: the password to be checked.
+        :return: True if the password matches, False otherwise.
+        """
         return check_password_hash(self.password_hash, password)
 
     def __repr__(self):
@@ -90,6 +156,18 @@ class Users(db.Model, UserMixin):
 
 
 class Orders(db.Model):
+    """
+    A model for representing orders in a database.
+
+    Attributes:
+    - id: the unique identifier of the order
+    - user_id: the ID of the user who placed the order
+    - composition_order: the composition of the order
+    - date_and_time_order_creation: the date and time when the order was created
+    - date_and_time_delivery: the date and time when the order will be delivered
+    - payment_status: the status of payment for the order
+    - delivery_status: the status of delivery for the order
+    """
 
     __tablename__ = 'orders'
 

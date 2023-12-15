@@ -1,3 +1,6 @@
+"""
+Package for working with a database.
+"""
 from .models import Meal, \
                     CategoriesMeal
 from .loading_fixtures import path_for_meal, \

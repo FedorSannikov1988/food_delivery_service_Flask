@@ -1,3 +1,6 @@
+"""
+Module for creating a view for logging into the user's personal account.
+"""
 from config import app
 from flask import flash, \
                   url_for, \
@@ -11,6 +14,11 @@ from app.db_api import searching_user_account
 
 @app.route('/log_in_account/', methods=['GET', 'POST'])
 def log_in_account():
+    """
+    Route for user login.
+
+    :return: Response -> the rendered template for the login page.
+    """
 
     form = UserLogIn()
 

@@ -1,3 +1,22 @@
+"""
+Module for managing the user's shopping cart.
+
+This module contains routes and functions for managing the user's
+shopping cart. It includes functionality for adding items to the cart,
+removing items from the cart, and displaying the contents of the cart.\
+
+Functions:
+- shopping_cart_user() : Renders the shopping cart page with the
+user's cart contents.
+- inject_number_products_in_user_cart() : Injects the number of
+products in the user's cart into the context.
+- add_one_thing_shopping_cart(where_return: str, id_meal: int) : Adds one
+item to the shopping cart.
+- subtract_one_thing_shopping_cart(where_return: str, id_meal: int) : Subtracts
+one item from the shopping cart.
+- delete_all_thing_shopping_cart(where_return: str, id_meal: int) : Deletes
+all items of a specific type from the shopping cart.
+"""
 from config import app
 from app.db_api import Meal, \
                        get_meal
@@ -10,6 +29,21 @@ from flask_login import current_user
 
 @app.route('/shopping_cart_user/')
 def shopping_cart_user():
+    """
+    Route for displaying the user's shopping cart.
+
+    If the user is authenticated, this route retrieves the user's cart
+    from the session and calculates the total price of the items in the
+    cart. It then renders the 'shopping_cart_user.html' template with the
+    cart contents and total price.
+
+    If the user is not authenticated, it redirects to the 'log_in_account'
+    route.
+
+    :return:
+    The rendered 'shopping_cart_user.html' template with the cart
+    contents and total price. Or a redirect to the 'log_in_account' route.
+    """
 
     if current_user.is_authenticated:
 
@@ -55,6 +89,13 @@ def shopping_cart_user():
 
 @app.context_processor
 def inject_number_products_in_user_cart():
+    """
+    Injects the number of products in the user's
+    cart into the context.
+
+    :return: Dictionary containing the number of
+    products in the user's cart.
+    """
 
     number_products_in_user_cart = None
 
@@ -69,6 +110,18 @@ def inject_number_products_in_user_cart():
 
 @app.route('/add_one_thing_shopping_cart/<where_return>/<int:id_meal>/')
 def add_one_thing_shopping_cart(where_return: str, id_meal: int):
+    """
+    Route for adding one item to the shopping cart.
+
+    :param where_return: str -> The route to redirect to after
+    updating the cart.
+
+    :param id_meal: int -> The ID of the meal to add to the cart.
+
+    :return: Returns -> A redirect to the specified 'where_return'
+    route with an anchor formation based on the meal ID.
+    Or a redirect to the 'log_in_account' route.
+    """
 
     if current_user.is_authenticated:
 
@@ -98,6 +151,19 @@ def add_one_thing_shopping_cart(where_return: str, id_meal: int):
 
 @app.route('/subtract_one_thing_shopping_cart/<where_return>/<int:id_meal>/')
 def subtract_one_thing_shopping_cart(where_return: str, id_meal: int):
+    """
+    Route for subtracting one item from the shopping cart.
+
+    :param where_return: str -> The route to redirect to after updating
+    the cart.
+
+    :param id_meal: int -> The ID of the meal to subtract from the cart.
+
+    :return:
+    A redirect to the specified 'where_return' route with an anchor
+    formation based on the meal ID. Or a redirect to the 'log_in_account'
+    route.
+    """
 
     if current_user.is_authenticated:
 
@@ -123,7 +189,21 @@ def subtract_one_thing_shopping_cart(where_return: str, id_meal: int):
 
 
 @app.route('/delete_all_thing_shopping_cart/<where_return>/<int:id_meal>/')
-def delete_all_thing_shopping_cart(where_return: str, id_meal: int):
+def delete_all_thing_shopping_cart(where_return: str,
+                                   id_meal: int):
+    """
+    Route for deleting all items of a specific type from the shopping cart.
+
+    :param where_return: str -> The route to redirect to after
+    updating the cart.
+
+    :param id_meal: int -> The ID of the meal to delete from the cart.
+
+    :return:
+    - A redirect to the specified 'where_return' route with an anchor
+    formation based on the meal ID. Or a redirect to the 'log_in_account'
+    route.
+    """
 
     if current_user.is_authenticated:
 

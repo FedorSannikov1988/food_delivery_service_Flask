@@ -1,3 +1,8 @@
+"""
+This module is responsible for executing commands, in particular
+commands to the database within the application: creating a database,
+filling in a database from fixtures.
+"""
 from config import db, \
                    app, \
                    logger
@@ -11,13 +16,37 @@ from .db_api import Meal, \
 
 
 @app.cli.command("init-db")
-def init_db():
+def init_db() -> None:
+    """
+    Command to initialize the database.
+
+    Description:
+    This command creates all the necessary tables in the database.
+    It should be run before using any other commands that interact
+    with the database.
+
+    Example usage:
+    flask init-db
+
+    :return: None
+    """
     db.create_all()
     print('db init')
 
 
 @app.cli.command("add-categories_meal-in-db")
 def add_categories_meal_in_db():
+    """
+    Command to add food categories to the database.
+
+    Description:
+    This command loads food categories from a fixtures file and adds
+    them to the database.
+    It checks if a category already exists in the database before adding it.
+
+    Example usage:
+    flask add-categories_meal-in-db
+    """
 
     all_categories_meal: dict = {}
 
@@ -51,6 +80,16 @@ def add_categories_meal_in_db():
 
 @app.cli.command("add-meal-in-db")
 def add_meal_in_db():
+    """
+    Command to add meals to the database.
+
+    Description:
+    This command loads meals from a fixtures file and adds them to the database.
+    It checks if a meal already exists in the database before adding it.
+
+    Example usage:
+    flask add-meal-in-db
+    """
 
     all_meal: dict = {}
 

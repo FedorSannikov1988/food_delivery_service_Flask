@@ -1,3 +1,7 @@
+"""
+This module is necessary to create key instances of the app class and the
+subsequent configuration of the application (setting the required values).
+"""
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_migrate import Migrate

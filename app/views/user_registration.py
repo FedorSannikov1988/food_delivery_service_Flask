@@ -1,3 +1,6 @@
+"""
+Module for user registration in the application.
+"""
 from config import app, \
                    LOWER_AGE_YEARS, \
                    UPPER_AGE_YEARS
@@ -16,6 +19,17 @@ from sqlalchemy.exc import IntegrityError
 
 @app.route('/user_registration/', methods=['GET', 'POST'])
 def user_registration():
+    """
+    Route for user registration.
+
+    :return:
+    - Redirect to the 'flash_message_for_user' route if the user is
+    successfully registered.
+    - Redirect to the 'user_registration' route if there is an error
+    during registration or if the form is not submitted via POST.
+    - Rendered template for the 'user_registration.html' page with the
+    registration form and context variables.
+    """
 
     form = UserRegistration()
 

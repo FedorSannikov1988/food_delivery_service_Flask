@@ -1,3 +1,7 @@
+"""
+a module for creating a view and everything related to
+it when entering an email (when the user forgot the password).
+"""
 from config import app
 from flask import flash, \
                   request, \
@@ -11,6 +15,13 @@ from app.forms import ForgetPasswordEnteringEmail
 
 @app.route('/forget_password_enter_email/', methods=['GET', 'POST'])
 def forget_password_enter_email():
+    """
+    Route for entering an email address in the
+    password recovery procedure.
+
+    :return: Response -> the rendered template for
+    entering the email address
+    """
 
     form = ForgetPasswordEnteringEmail()
 

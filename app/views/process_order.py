@@ -1,3 +1,6 @@
+"""
+Module for processing an order in the application.
+"""
 import json
 from config import app, \
                    logger
@@ -12,12 +15,20 @@ from app.db_api import create_new_order
 
 @app.route('/process_order/')
 def process_order():
+    """
+     Route for processing an order.
+
+    :return:
+    - Redirect to the 'personal_account' route if the user is authenticated and there is a user cart.
+    - Redirect to the 'index' route if the user is not authenticated.
+
+    """
 
     if current_user.is_authenticated:
 
         if session.get('user_cart'):
 
-            #try:
+            try:
 
                 user_cart: dict = session.get('user_cart')
 
@@ -34,8 +45,8 @@ def process_order():
                                  date_and_time_delivery=
                                  fantasy_date_and_time_delivery)
 
-            #except Exception as error:
-            #    logger.error(error)
+            except Exception as error:
+                logger.error(error)
 
         return redirect(url_for('personal_account'))
 

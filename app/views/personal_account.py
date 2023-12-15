@@ -1,3 +1,7 @@
+"""
+Module for creating a view necessary
+for the operation of the user's personal account
+"""
 import json
 from config import app
 from flask import flash, \
@@ -6,7 +10,7 @@ from flask import flash, \
                   redirect, \
                   render_template
 from flask_login import current_user, \
-                        login_required
+    login_required, logout_user
 from app.db_api import get_meal, \
                        add_user_photo, \
                        change_password, \
@@ -28,6 +32,11 @@ DATA_FORMAT_PERSONAL_ACCOUNT: str = "%d.%m.%Y"
 @app.route('/personal_account/', methods=['GET', 'POST'])
 @login_required
 def personal_account():
+    """
+    Route for user login.
+
+    :return: Response -> the rendered template for the login page
+    """
 
     all_orders_user: list = []
 
@@ -115,6 +124,12 @@ def personal_account():
 
 
 def __delete_user_photo_in_personal_account(name_file_photo: str) -> None:
+    """
+    Deletes a user's photo in the personal account.
+
+    :param name_file_photo: str - > The name of the photo file to be deleted.
+    :return: None
+    """
 
     path_user_photo_to_delete = \
         WorkingWithFiles.generating_path_file_in_folder__user_photos(name_file=
@@ -126,6 +141,15 @@ def __delete_user_photo_in_personal_account(name_file_photo: str) -> None:
 @app.route('/personal_account_change_personal_data/', methods=['GET', 'POST'])
 @login_required
 def personal_account_change_personal_data():
+    """
+     Route for changing personal data in the user's personal account.
+
+    :return:
+    - Redirect to the 'personal_account' route if the form data
+    is valid and the personal data is successfully updated.
+    - Rendered template for the 'personal_account_change_personal_data.html'
+    page with the form and context variables.
+    """
 
     form = PersonalAccountChangePersonalData()
 
@@ -153,6 +177,21 @@ def personal_account_change_personal_data():
 @app.route('/personal_account_change_delivery_address/', methods=['GET', 'POST'])
 @login_required
 def personal_account_change_delivery_address():
+    """
+    Route for changing the default delivery address in
+    the user's personal account.
+
+    :return:
+
+    - Redirect to the 'personal_account' route if the
+    form data is valid and the default delivery address
+    is successfully updated.
+
+    - Rendered template for the
+    'personal_account_change_delivery_address.html'
+    page with the form and context variables.
+
+    """
 
     form = PersonalAccountChangeDeliveryAddress()
 
@@ -177,6 +216,17 @@ def personal_account_change_delivery_address():
 @app.route('/personal_account_change_password/', methods=['GET', 'POST'])
 @login_required
 def personal_account_change_password():
+    """
+    Route for changing the password in the user's personal account.
+
+    :return:
+
+    - Redirect to the 'personal_account' route if the form data is valid
+    and the password is successfully updated.
+
+    - Rendered template for the 'personal_account_change_password.html'
+    page with the form and context variables.
+    """
 
     form = PersonalAccountChangePassword()
 
@@ -204,6 +254,21 @@ def personal_account_change_password():
         'title_page': 'Личный кабинет - Изминение пароля.'
     }
     return render_template('personal_account_change_password.html', form=form, **context)
+
+
+@app.route('/log_out_personal_account/')
+@login_required
+def log_out_personal_account():
+    """
+    Route for logging out of the user's personal account.
+
+    This route logs out the current user by calling the
+    'logout_user' function from the 'flask_login' module.
+
+    :return: Redirect to the 'index' route.
+    """
+    logout_user()
+    return redirect(url_for('index'))
 
 
 if __name__ == '__main__':

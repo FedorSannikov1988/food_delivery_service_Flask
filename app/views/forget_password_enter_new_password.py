@@ -1,3 +1,7 @@
+"""
+Module for creating a view and everything related to it
+when entering a new password (when the user forgot the password).
+"""
 from config import app, \
                    DURATION_PASSWORD_RECOVERY_LINK_MINUTES
 from flask import flash, \
@@ -11,6 +15,12 @@ from app.db_api import searching_user_account_and_setting_new_password
 
 @app.route('/forget_password_enter_new_password/<token>', methods=['GET', 'POST'])
 def forget_password_enter_new_password(token: str = ' '):
+    """
+    Route for entering a new password in the password recovery procedure.
+
+    :param token: str -> The token received from the password recovery link
+    :return: Response -> the rendered template for entering a new password
+    """
 
     show_form: bool = False
     form = ForgetPasswordEnterNewPassword()
