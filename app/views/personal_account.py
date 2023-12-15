@@ -1,3 +1,4 @@
+import json
 from config import app
 from flask import flash, \
                   url_for, \
@@ -6,9 +7,11 @@ from flask import flash, \
                   render_template
 from flask_login import current_user, \
                         login_required
-from app.db_api import add_user_photo, \
+from app.db_api import get_meal, \
+                       add_user_photo, \
                        change_password, \
                        delete_user_photo, \
+                       get_all_orders_user, \
                        change_personal_data, \
                        change_default_shipping_address
 from werkzeug.utils import secure_filename
@@ -18,15 +21,25 @@ from app.forms import PersonalAccountChangePassword, \
                       PersonalAccountChangeDeliveryAddress
 
 
+DATA_AND_TIME_FORMAT_PERSONAL_ACCOUNT: str = "%d.%m.%Y %H:%M:%S"
+DATA_FORMAT_PERSONAL_ACCOUNT: str = "%d.%m.%Y"
+
+
 @app.route('/personal_account/', methods=['GET', 'POST'])
 @login_required
 def personal_account():
 
+    all_orders_user: list = []
+
     if request.method == 'POST':
         file = \
             request.files.get('file')
+
         user_photo_to_delete = \
             request.form.get('user_photo_to_delete')
+
+        order_history_user = \
+            request.form.get('order_history_user')
 
         if file:
 
@@ -52,9 +65,51 @@ def personal_account():
 
             delete_user_photo(email=current_user.email)
 
+        if order_history_user:
+
+            print(get_all_orders_user(user_id=current_user.id))
+
+            for order in get_all_orders_user(user_id=current_user.id):
+
+                list_meal: list = []
+
+                total_cost: float = 0
+
+                for meal_id, quantity in json.loads(order.composition_order).items():
+
+                    meal = get_meal(id_meal=int(meal_id))
+
+                    total_cost += meal.cost
+
+                    list_meal.append({
+                        'title': meal.title,
+                        'cost': meal.cost,
+                        'quantity': quantity
+                    })
+
+                date_and_time_order_creation = \
+                    order.date_and_time_order_creation.strftime(
+                        DATA_AND_TIME_FORMAT_PERSONAL_ACCOUNT
+                    )
+
+                date_and_time_delivery = \
+                    order.date_and_time_delivery.strftime(
+                        DATA_AND_TIME_FORMAT_PERSONAL_ACCOUNT
+                    )
+
+                all_orders_user.append({
+                    'date_and_time_order_creation': date_and_time_order_creation,
+                    'date_and_time_delivery': date_and_time_delivery,
+                    'payment_status': order.payment_status,
+                    'delivery_status': order.delivery_status,
+                    'list_meal': list_meal,
+                    'total_cost': total_cost
+                })
+
     context = {
         'title_page': 'Личный кабинет',
-        'date_birth': current_user.date_birth.strftime('%d.%m.%Y')
+        'all_orders_user': all_orders_user,
+        'date_birth': current_user.date_birth.strftime(DATA_FORMAT_PERSONAL_ACCOUNT)
     }
     return render_template('personal_account.html', **context)
 

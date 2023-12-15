@@ -127,3 +127,7 @@ def create_new_order(user_id: int,
 
     db.session.add(new_order)
     db.session.commit()
+
+
+def get_all_orders_user(user_id: int) -> Optional[list[Orders]]:
+    return Orders.query.filter_by(user_id=user_id).all()

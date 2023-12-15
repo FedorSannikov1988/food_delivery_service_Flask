@@ -8,6 +8,7 @@ from .requests import get_meal, \
                       change_password, \
                       create_new_order, \
                       delete_user_photo, \
+                      get_all_orders_user, \
                       add_user_in_database, \
                       change_personal_data, \
                       searching_user_account, \

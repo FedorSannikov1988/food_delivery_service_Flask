@@ -83,7 +83,7 @@
 
 .content-for-personal-account__set-user-photo__download_file {
     color: transparent;
-    width: 134px;
+    width: 136px;
 }
 
 .content-for-personal-account__set-user-photo {
@@ -230,9 +230,62 @@
     border-color: #91b90a;
 }
 
-.content-for-personal-account__delivery-password {
+.content-for-personal-account__delivery-password__order-history {
     display: flex;
     align-items: baseline;
     gap: 30px;
 }
 
+.content-for-personal-account__order_history_user {
+    color: #000;
+
+    font-family: "Cousine-Regular";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+
+      display: inline-block;
+      background: #F8F8F8FF;
+      border: 1px solid #000000;
+      border-radius: 3px;
+      padding: 5px 8px;
+      outline: none;
+      white-space: nowrap;
+      -webkit-user-select: none;
+      cursor: pointer;
+
+    transition: 500ms;
+}
+
+.content-for-personal-account__order_history_user:hover {
+    color: #ffffff;
+    background: #91b90a;
+    border-color: #91b90a;
+}
+
+.personal-accoun__table_all_orders_user {
+    border-collapse: collapse;
+
+    color: #000;
+    font-family: "Cousine-Regular";
+    font-size: 12px;
+    font-weight: 400;
+    line-height: normal;
+
+    margin-top: 50px;
+}
+
+th, td {
+    border: 2px solid black;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.personal-accoun__table_all_orders_user__text_title {
+    margin: 10px;
+}
+
+.wrapper_personal-accoun__table_all_orders_user {
+    height: 400px;
+    overflow-y: scroll;
+}

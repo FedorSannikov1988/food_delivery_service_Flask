@@ -4,7 +4,8 @@ from config import app, \
 from flask import url_for, \
                   session, \
                   redirect
-from datetime import datetime
+from datetime import datetime, \
+                     timedelta
 from flask_login import current_user
 from app.db_api import create_new_order
 
@@ -16,7 +17,7 @@ def process_order():
 
         if session.get('user_cart'):
 
-            try:
+            #try:
 
                 user_cart: dict = session.get('user_cart')
 
@@ -24,12 +25,17 @@ def process_order():
 
                 user_cart_json = json.dumps(user_cart)
 
-                create_new_order(user_id=current_user.id,
-                                 composition_order=user_cart_json,
-                                 date_and_time_delivery=datetime.now())
+                fantasy_date_and_time_delivery = \
+                    datetime.now() + timedelta(hours=2)
 
-            except Exception as error:
-                logger.error(error)
+                create_new_order(user_id=current_user.id,
+                                 composition_order=
+                                 user_cart_json,
+                                 date_and_time_delivery=
+                                 fantasy_date_and_time_delivery)
+
+            #except Exception as error:
+            #    logger.error(error)
 
         return redirect(url_for('personal_account'))
 

@@ -91,7 +91,8 @@
                 </div>
             </div>
 
-            <div class="content-for-personal-account__delivery-password">
+            <div class="content-for-personal-account__delivery-password__order-history">
+
                 <div class="wrapper_for_edit_button">
                     <a class="content-for-personal-account__edit_button__link"
                        href="{{ url_for('personal_account_change_password') }}">
@@ -100,19 +101,100 @@
                         </button>
                     </a>
                 </div>
+
+                <form method="post" action="{{ url_for('personal_account') }}">
+                    <input type="hidden" name="order_history_user" value="order_history_user_{{ current_user.id }}">
+                    <input class="content-for-personal-account__order_history_user" type="submit" value="История заказов">
+                </form>
+
             </div>
 
-            <div class="content-for-personal-account__delivery-password">
-                <div class="wrapper_for_edit_button">
-                    <a class="content-for-personal-account__edit_button__link"
-                       href="{{ url_for('personal_account_change_password') }}">
-                        <button class="content-for-personal-account__edit_button">
-                            Посмотреть историю Заказов
-                        </button>
-                    </a>
+            {% if all_orders_user %}
+
+                <div class="wrapper_personal-accoun__table_all_orders_user">
+
+                    <table class="personal-accoun__table_all_orders_user">
+                        <tr>
+                            <th>
+                                <p class="personal-accoun__table_all_orders_user__text_title">
+                                    Дата и время создания заказа
+                                </p>
+                            </th>
+                            <th>
+                                <p class="personal-accoun__table_all_orders_user__text_title">
+                                    Дата и время доставки
+                                </p>
+                            </th>
+                            <th>
+                                <p class="personal-accoun__table_all_orders_user__text_title">
+                                    Статус оплаты
+                                </p>
+                            </th>
+                            <th>
+                                <p class="personal-accoun__table_all_orders_user__text_title">
+                                    Статус доставки
+                                </p>
+                            </th>
+                            <th>
+                                <p class="personal-accoun__table_all_orders_user__text_title">
+                                    Полная стоимость
+                                </p>
+                            </th>
+                            <th>
+                                <p class="personal-accoun__table_all_orders_user__text_title">
+                                    Состав заказа
+                                </p>
+                            </th>
+                        </tr>
+
+                    {% for order in all_orders_user %}
+
+                        <tr>
+                            <td>{{ order.date_and_time_order_creation }}</td>
+                            <td>{{ order.date_and_time_delivery }}</td>
+                            <td>
+                                {% if order.payment_status %}
+                                    <p>Оплачен</p>
+                                {% else %}
+                                    <p>Не оплачен</p>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if order.delivery_status %}
+                                    <p>Доставлен</p>
+                                {% else %}
+                                    <p>Не доставлен</p>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if order.total_cost|int == order.total_cost %}
+                                    <p>{{ order.total_cost|int }} ₽</p>
+                                {% else %}
+                                    <p>{{ order.total_cost }} ₽</p>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% for meal in order.list_meal %}
+                                    <p>
+                                        {{ meal.title }} -
+                                            {% if meal.cost|int == meal.cost %}
+                                                {{ meal.cost|int }} ₽
+                                            {% else %}
+                                                {{ meal.cost }} ₽
+                                            {% endif %} -
+                                        {{ meal.quantity }} штук.
+                                    </p>
+                                {% endfor %}
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+
+                    </table>
+
                 </div>
-            </div>
 
+            {% endif %}
 
         </div>
     </section>
