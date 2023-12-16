@@ -108,9 +108,11 @@ MAIL_PASSWORD= пароль для подключения к почтовому 
 5. Инициализируйте и заполните базу данных по средствам следующих коменд 
 (соглано приведенному ниже порядку) в командной строке (в дирректории проекта):
 
-- flask init-db
-- flask add-categories_meal-in-db
-- flask add-meal-in-db
+flask init-db
+
+flask add-categories_meal-in-db
+
+flask add-meal-in-db
 
 База данных заполняется на основе содержания файла фикстур categories_meal.json 
 и meal.json расположенных в папке fixtures .
